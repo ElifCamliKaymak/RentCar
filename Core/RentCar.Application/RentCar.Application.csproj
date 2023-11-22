@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\RentCar.Domain\RentCar.Domain.csproj" />
+    <ProjectReference Include="..\RentCar.Domain\RentCar.Domain.csproj" />
   </ItemGroup>
 
 </Project>
