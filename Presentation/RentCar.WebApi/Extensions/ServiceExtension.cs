@@ -1,5 +1,6 @@
 ﻿using RentCar.Application.Features.CQRS.Handlers.AboutHandlers;
 using RentCar.Application.Features.CQRS.Handlers.BannerHandlers;
+using RentCar.Application.Features.CQRS.Handlers.BrandHandlers;
 using RentCar.Application.Interfaces;
 using RentCar.Persistance.Repositories;
 
@@ -28,6 +29,15 @@ namespace RentCar.WebApi.Extensions
             services.AddScoped<CreateBannerCommandHandler>();
             services.AddScoped<UpdateBannerCommandHandler>();
             services.AddScoped<RemoveBannerCommandHandler>();
+        }
+
+        public static void ConfigureBrandRegistration(this IServiceCollection services)
+        {
+            services.AddScoped<GetBrandQueryHandler>();
+            services.AddScoped<GetBrandByIdQueryHandler>();
+            services.AddScoped<CreateBrandCommandHandler>();
+            services.AddScoped<UpdateBrandCommandHandler>();
+            services.AddScoped<RemoveBrandCommandHandler>();
         }
     }
 }

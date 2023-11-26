@@ -12,6 +12,7 @@ builder.Services.AddScoped<RentCarContext>();
 builder.Services.ConfigureRepositoryRegistration();
 builder.Services.ConfigureAboutRegistration();
 builder.Services.ConfigureBannerRegistration();
+builder.Services.ConfigureBrandRegistration();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
