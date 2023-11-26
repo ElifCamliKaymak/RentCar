@@ -1,8 +1,12 @@
 ﻿using RentCar.Application.Features.CQRS.Handlers.AboutHandlers;
 using RentCar.Application.Features.CQRS.Handlers.BannerHandlers;
 using RentCar.Application.Features.CQRS.Handlers.BrandHandlers;
+using RentCar.Application.Features.CQRS.Handlers.CarHandlers;
+using RentCar.Application.Features.CQRS.Handlers.CategoryHandlers;
 using RentCar.Application.Interfaces;
+using RentCar.Application.Interfaces.CarInterfaces;
 using RentCar.Persistance.Repositories;
+using RentCar.Persistance.Repositories.CarRepositories;
 
 namespace RentCar.WebApi.Extensions
 {
@@ -11,6 +15,7 @@ namespace RentCar.WebApi.Extensions
         public static void ConfigureRepositoryRegistration(this IServiceCollection services)
         {
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped(typeof(ICarRepository), typeof(CarRepository));
         }
 
         public static void ConfigureAboutRegistration(this IServiceCollection services)
@@ -38,6 +43,25 @@ namespace RentCar.WebApi.Extensions
             services.AddScoped<CreateBrandCommandHandler>();
             services.AddScoped<UpdateBrandCommandHandler>();
             services.AddScoped<RemoveBrandCommandHandler>();
+        }
+
+        public static void ConfigureCarRegistration(this IServiceCollection services)
+        {
+            services.AddScoped<GetCarQueryHandler>();
+            services.AddScoped<GetCarByIdQueryHandler>();
+            services.AddScoped<CreateCarCommandHandler>();
+            services.AddScoped<UpdateCarCommandHandler>();
+            services.AddScoped<RemoveCarCommandHandler>();
+            services.AddScoped<GetCarWithBrandQueryHandler>();
+        }        
+        
+        public static void ConfigureCategoryRegistration(this IServiceCollection services)
+        {
+            services.AddScoped<GetCategoryQueryHandler>();
+            services.AddScoped<GetCategoryByIdQueryHandler>();
+            services.AddScoped<CreateCategoryCommandHandler>();
+            services.AddScoped<UpdateCategoryCommandHandler>();
+            services.AddScoped<RemoveCategoryCommandHandler>();
         }
     }
 }

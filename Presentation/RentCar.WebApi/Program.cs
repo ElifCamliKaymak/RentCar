@@ -1,7 +1,4 @@
-using RentCar.Application.Features.CQRS.Handlers.AboutHandlers;
-using RentCar.Application.Interfaces;
 using RentCar.Persistance.Context;
-using RentCar.Persistance.Repositories;
 using RentCar.WebApi.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +10,8 @@ builder.Services.ConfigureRepositoryRegistration();
 builder.Services.ConfigureAboutRegistration();
 builder.Services.ConfigureBannerRegistration();
 builder.Services.ConfigureBrandRegistration();
+builder.Services.ConfigureCarRegistration();
+builder.Services.ConfigureCategoryRegistration();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

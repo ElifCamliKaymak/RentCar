@@ -32,7 +32,7 @@ namespace RentCar.WebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetBanner(int id)
+        public async Task<IActionResult> GetBrand(int id)
         {
             var value=await _getBrandByIdQueryHandler.Handle(new GetBrandByIdQuery(id));
             return Ok(value);
