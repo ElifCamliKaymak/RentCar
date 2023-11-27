@@ -1,4 +1,4 @@
-﻿using RentCar.Application.Features.CQRS.Results.CarResult;
+﻿using RentCar.Application.Features.CQRS.Results.CarResults;
 using RentCar.Application.Interfaces;
 using RentCar.Domain.Entities;
 

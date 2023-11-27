@@ -1,4 +1,4 @@
-﻿namespace RentCar.Application.Features.CQRS.Results.CategoryResult
+﻿namespace RentCar.Application.Features.CQRS.Results.CategoryResults
 {
     public class GetCategoryQueryResult
     {

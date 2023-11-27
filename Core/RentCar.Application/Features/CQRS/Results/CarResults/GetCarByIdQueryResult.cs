@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RentCar.Application.Features.CQRS.Results.CarResult
+﻿namespace RentCar.Application.Features.CQRS.Results.CarResults
 {
-    public class GetCarWithBrandQueryResult
+    public class GetCarByIdQueryResult
     {
         public int CarId { get; set; }
         public int BrandId { get; set; }
-        public string BrandName { get; set; }
         public string Model { get; set; }
         public string CoverImagerUrl { get; set; }
         public int Km { get; set; }

@@ -1,6 +1,6 @@
-﻿namespace RentCar.Application.Features.CQRS.Results.CarResult
+﻿namespace RentCar.Application.Features.CQRS.Results.CarResults
 {
-    public class GetCarByIdQueryResult
+    public class GetCarQueryResult
     {
         public int CarId { get; set; }
         public int BrandId { get; set; }

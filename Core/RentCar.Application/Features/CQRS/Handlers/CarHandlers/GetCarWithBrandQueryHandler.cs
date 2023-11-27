@@ -1,4 +1,4 @@
-﻿using RentCar.Application.Features.CQRS.Results.CarResult;
+﻿using RentCar.Application.Features.CQRS.Results.CarResults;
 using RentCar.Application.Interfaces.CarInterfaces;
 
 namespace RentCar.Application.Features.CQRS.Handlers.CarHandlers

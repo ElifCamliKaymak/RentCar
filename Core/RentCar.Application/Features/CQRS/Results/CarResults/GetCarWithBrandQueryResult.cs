@@ -1,9 +1,10 @@
-﻿namespace RentCar.Application.Features.CQRS.Results.CarResult
+﻿namespace RentCar.Application.Features.CQRS.Results.CarResults
 {
-    public class GetCarQueryResult
+    public class GetCarWithBrandQueryResult
     {
         public int CarId { get; set; }
         public int BrandId { get; set; }
+        public string BrandName { get; set; }
         public string Model { get; set; }
         public string CoverImagerUrl { get; set; }
         public int Km { get; set; }

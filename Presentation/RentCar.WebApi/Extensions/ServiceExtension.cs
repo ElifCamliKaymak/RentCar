@@ -3,6 +3,7 @@ using RentCar.Application.Features.CQRS.Handlers.BannerHandlers;
 using RentCar.Application.Features.CQRS.Handlers.BrandHandlers;
 using RentCar.Application.Features.CQRS.Handlers.CarHandlers;
 using RentCar.Application.Features.CQRS.Handlers.CategoryHandlers;
+using RentCar.Application.Features.CQRS.Handlers.ContactHandlers;
 using RentCar.Application.Interfaces;
 using RentCar.Application.Interfaces.CarInterfaces;
 using RentCar.Persistance.Repositories;
@@ -62,6 +63,14 @@ namespace RentCar.WebApi.Extensions
             services.AddScoped<CreateCategoryCommandHandler>();
             services.AddScoped<UpdateCategoryCommandHandler>();
             services.AddScoped<RemoveCategoryCommandHandler>();
+        }    
+        public static void ConfigureContactRegistration(this IServiceCollection services)
+        {
+            services.AddScoped<GetContactQueryHandler>();
+            services.AddScoped<GetContactByIdQueryHandler>();
+            services.AddScoped<CreateContactCommandHandler>();
+            services.AddScoped<UpdateContactCommandHandler>();
+            services.AddScoped<RemoveContactCommandHandler>();
         }
     }
 }

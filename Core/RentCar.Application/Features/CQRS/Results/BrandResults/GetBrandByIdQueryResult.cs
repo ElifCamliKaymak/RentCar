@@ -1,4 +1,4 @@
-﻿namespace RentCar.Application.Features.CQRS.Results.BrandResult
+﻿namespace RentCar.Application.Features.CQRS.Results.BrandResults
 {
     public class GetBrandByIdQueryResult
     {

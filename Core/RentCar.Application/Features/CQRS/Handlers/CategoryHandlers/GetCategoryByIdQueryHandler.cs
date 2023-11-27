@@ -1,5 +1,5 @@
 ﻿using RentCar.Application.Features.CQRS.Queries.CategoryQueries;
-using RentCar.Application.Features.CQRS.Results.CategoryResult;
+using RentCar.Application.Features.CQRS.Results.CategoryResults;
 using RentCar.Application.Interfaces;
 using RentCar.Domain.Entities;
 

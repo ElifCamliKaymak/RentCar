@@ -1,5 +1,5 @@
 ﻿using RentCar.Application.Features.CQRS.Queries.BrandQueries;
-using RentCar.Application.Features.CQRS.Results.BrandResult;
+using RentCar.Application.Features.CQRS.Results.BrandResults;
 using RentCar.Application.Interfaces;
 using RentCar.Domain.Entities;
 
