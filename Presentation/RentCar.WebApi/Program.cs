@@ -14,6 +14,8 @@ builder.Services.ConfigureCarRegistration();
 builder.Services.ConfigureCategoryRegistration();
 builder.Services.ConfigureContactRegistration();
 
+builder.Services.AddMediatorServices(builder.Configuration);
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
