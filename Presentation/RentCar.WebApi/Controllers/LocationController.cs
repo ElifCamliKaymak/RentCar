@@ -17,35 +17,35 @@ namespace RentCar.WebApi.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> FooterAdressList()
+        public async Task<IActionResult> LocationList()
         {
             var values = await _mediator.Send(new GetLocationQuery());
             return Ok(values);
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetFooterAdress(int id)
+        public async Task<IActionResult> GetLocation(int id)
         {
             var value = await _mediator.Send(new GetLocationByIdQuery(id));
             return Ok(value);
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateFooterAdress(CreateLocationCommand command)
+        public async Task<IActionResult> CreateLocation(CreateLocationCommand command)
         {
             await _mediator.Send(command);
             return Ok("Konum başarıyla eklendi.");
         }
 
         [HttpDelete]
-        public async Task<IActionResult> RemoveFooterAdress(int id)
+        public async Task<IActionResult> RemoveLocation(int id)
         {
             await _mediator.Send(new RemoveLocationCommand(id));
             return Ok("Konum bilgisi silindi.");
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateRemove(UpdateLocationCommand command)
+        public async Task<IActionResult> UpdateLocation(UpdateLocationCommand command)
         {
             await _mediator.Send(command);
             return Ok("Konum bilgisi güncellendi.");
