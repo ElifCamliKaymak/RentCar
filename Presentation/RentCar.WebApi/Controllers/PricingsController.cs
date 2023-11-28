@@ -8,11 +8,11 @@ namespace RentCar.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PricingController : ControllerBase
+    public class PricingsController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public PricingController(IMediator mediator)
+        public PricingsController(IMediator mediator)
         {
             _mediator = mediator;
         }
