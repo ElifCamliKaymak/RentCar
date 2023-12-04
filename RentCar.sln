@@ -17,6 +17,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentCar.Application", "Core
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RentCar.Domain", "Core\RentCar.Domain\RentCar.Domain.csproj", "{D02D46D6-B2F9-47D3-92ED-E870F9472771}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontends", "Frontends", "{EB54A382-73CB-434B-AB75-C533252D7568}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentCar.WebUI", "Frondends\RentCar.WebUI\RentCar.WebUI.csproj", "{43F03AF8-78D1-4507-A286-DB7FE1EF4AD4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,10 @@ Global
 		{D02D46D6-B2F9-47D3-92ED-E870F9472771}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D02D46D6-B2F9-47D3-92ED-E870F9472771}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D02D46D6-B2F9-47D3-92ED-E870F9472771}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43F03AF8-78D1-4507-A286-DB7FE1EF4AD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43F03AF8-78D1-4507-A286-DB7FE1EF4AD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43F03AF8-78D1-4507-A286-DB7FE1EF4AD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43F03AF8-78D1-4507-A286-DB7FE1EF4AD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +56,7 @@ Global
 		{EEAA8E72-BD8F-46EC-9049-E759CE5516DD} = {9F555121-BA41-4BAD-874B-372F0B6954F7}
 		{E66E5C37-D4AF-4EFF-97F5-4840561A7DF8} = {45D12511-9225-4DB9-811B-2E3AC6F577A6}
 		{D02D46D6-B2F9-47D3-92ED-E870F9472771} = {45D12511-9225-4DB9-811B-2E3AC6F577A6}
+		{43F03AF8-78D1-4507-A286-DB7FE1EF4AD4} = {EB54A382-73CB-434B-AB75-C533252D7568}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E1B01D0A-B904-4211-AA62-2AB4CEFB2D45}
