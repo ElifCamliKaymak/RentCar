@@ -3,5 +3,6 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Hakkımda Sayfası</h1>
-
+@await Component.InvokeAsync("_AboutUsComponentPartial")
+@await Component.InvokeAsync("_BecomeADriverComponentPartial")
+@await Component.InvokeAsync("_TestimonialComponentPartial")
