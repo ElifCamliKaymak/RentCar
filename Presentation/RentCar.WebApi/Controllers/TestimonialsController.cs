@@ -48,7 +48,7 @@ namespace RentCar.WebApi.Controllers
         public async Task<IActionResult> UpdateTestimonial(UpdateTestimonialCommand command)
         {
             await _mediator.Send(command);
-            return Ok("Referans bilgisi güncellendi");
+            return Ok("Referans bilgisi güncellendi.");
         }
     }
 }

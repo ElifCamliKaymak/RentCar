@@ -26,6 +26,8 @@ namespace RentCar.Persistance.Context
         public DbSet<Service> Services { get; set; }
         public DbSet<SocialMedia> SocialMedias { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }
+        public DbSet<Author> Authors { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
         
     }
 }

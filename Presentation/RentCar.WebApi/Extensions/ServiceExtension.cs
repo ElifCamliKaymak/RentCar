@@ -5,8 +5,10 @@ using RentCar.Application.Features.CQRS.Handlers.CarHandlers;
 using RentCar.Application.Features.CQRS.Handlers.CategoryHandlers;
 using RentCar.Application.Features.CQRS.Handlers.ContactHandlers;
 using RentCar.Application.Interfaces;
+using RentCar.Application.Interfaces.BlogInterfaces;
 using RentCar.Application.Interfaces.CarInterfaces;
 using RentCar.Persistance.Repositories;
+using RentCar.Persistance.Repositories.BlogRepositories;
 using RentCar.Persistance.Repositories.CarRepositories;
 
 namespace RentCar.WebApi.Extensions
@@ -17,6 +19,7 @@ namespace RentCar.WebApi.Extensions
         {
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped(typeof(ICarRepository), typeof(CarRepository));
+            services.AddScoped(typeof(IBlogRepository), typeof(BlogRepository));
         }
 
         public static void ConfigureAboutRegistration(this IServiceCollection services)
