@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RentCar.ViewModels.CarPricingVms;
-using RentCar.ViewModels.CarVms;
 
 namespace RentCar.WebUI.Controllers
 {
