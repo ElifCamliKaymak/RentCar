@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RentCar.Persistance.Context;
 
@@ -11,9 +12,11 @@ using RentCar.Persistance.Context;
 namespace RentCar.Persistance.Migrations
 {
     [DbContext(typeof(RentCarContext))]
-    partial class RentCarContextModelSnapshot : ModelSnapshot
+    [Migration("20231219175333_migg-add-blog-add-description")]
+    partial class miggaddblogadddescription
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -456,28 +459,6 @@ namespace RentCar.Persistance.Migrations
                     b.ToTable("SocialMedias");
                 });
 
-            modelBuilder.Entity("RentCar.Domain.Entities.TagCloud", b =>
-                {
-                    b.Property<int>("TagCloudId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TagCloudId"));
-
-                    b.Property<int>("BlogId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("TagCloudId");
-
-                    b.HasIndex("BlogId");
-
-                    b.ToTable("TagClouds");
-                });
-
             modelBuilder.Entity("RentCar.Domain.Entities.Testimonial", b =>
                 {
                     b.Property<int>("TestimonialId")
@@ -586,25 +567,9 @@ namespace RentCar.Persistance.Migrations
                     b.Navigation("Pricing");
                 });
 
-            modelBuilder.Entity("RentCar.Domain.Entities.TagCloud", b =>
-                {
-                    b.HasOne("RentCar.Domain.Entities.Blog", "Blog")
-                        .WithMany("TagClouds")
-                        .HasForeignKey("BlogId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Blog");
-                });
-
             modelBuilder.Entity("RentCar.Domain.Entities.Author", b =>
                 {
                     b.Navigation("Blogs");
-                });
-
-            modelBuilder.Entity("RentCar.Domain.Entities.Blog", b =>
-                {
-                    b.Navigation("TagClouds");
                 });
 
             modelBuilder.Entity("RentCar.Domain.Entities.Brand", b =>

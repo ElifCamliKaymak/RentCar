@@ -1,0 +1,16 @@
+﻿@model List<ResultCategoryVM>
+
+<div class="sidebar-box ftco-animate">
+    <div class="categories">
+        <h3>Categoriler</h3>
+        @foreach (var category in Model)
+        {
+            <li>
+                <a href="#">
+                    @category.Name
+                    <span>(0)</span>
+                </a>
+            </li>
+        }
+    </div>
+

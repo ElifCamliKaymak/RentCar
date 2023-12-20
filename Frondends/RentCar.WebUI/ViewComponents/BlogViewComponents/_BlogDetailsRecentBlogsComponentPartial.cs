@@ -4,10 +4,11 @@ using RentCar.ViewModels.BlogVms;
 
 namespace RentCar.WebUI.ViewComponents.BlogViewComponents
 {
-    public class _GetLastThreeBlogsWithAuthorListComponentPartial : ViewComponent
+    public class _BlogDetailsRecentBlogsComponentPartial : ViewComponent
     {
         private readonly IHttpClientFactory _httpClientFactory;
-        public _GetLastThreeBlogsWithAuthorListComponentPartial(IHttpClientFactory httpClientFactory)
+
+        public _BlogDetailsRecentBlogsComponentPartial(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
         }

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RentCar.Persistance.Context;
 
@@ -11,9 +12,11 @@ using RentCar.Persistance.Context;
 namespace RentCar.Persistance.Migrations
 {
     [DbContext(typeof(RentCarContext))]
-    partial class RentCarContextModelSnapshot : ModelSnapshot
+    [Migration("20231220132113_mig-add-tagcloud")]
+    partial class migaddtagcloud
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

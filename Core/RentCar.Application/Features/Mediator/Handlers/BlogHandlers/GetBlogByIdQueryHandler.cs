@@ -26,6 +26,7 @@ namespace RentCar.Application.Features.Mediator.Handlers.BlogHandlers
                 Title = value.Title,
                 CategoryId = value.CategoryId,
                 AuthorId = value.AuthorId,
+                Description = value.Description
             };
         }
     }
