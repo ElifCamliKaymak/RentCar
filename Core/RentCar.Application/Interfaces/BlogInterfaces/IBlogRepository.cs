@@ -6,6 +6,7 @@ namespace RentCar.Application.Interfaces.BlogInterfaces
     {
         Task<List<Blog>> GetLastThreeBlogsWithAuthors();
         Task<List<Blog>> GetAllBlogsWithAuthors();
+        Task<List<Blog>> GetBlogByAuthorIdAsync(int id);
 
     }
 }

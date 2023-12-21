@@ -50,5 +50,12 @@ namespace RentCar.WebApi.Controllers
             await _mediator.Send(command);
             return Ok("Etiket bulutu bilgisi güncellendi.");
         }
+
+        [HttpGet("GetTagCloudByBlogIdList/{id}")]
+        public async Task<IActionResult> GetTagCloudByBlogIdList(int id)
+        {
+            var values = await _mediator.Send(new GetTagCloudByBlogIdQuery(id));
+            return Ok(values);
+        }
     }
 }

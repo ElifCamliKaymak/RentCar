@@ -27,6 +27,8 @@ namespace RentCar.Application.Features.Mediator.Handlers.BlogHandlers
                 CoverImageUrl = x.CoverImageUrl,
                 CreatedDate = x.CreatedDate,
                 Description = x.Description,
+                AuthorDescription = x.Author.Description,
+                AuthorImageUrl = x.Author.ImageUrl,
                 Title = x.Title
             }).ToList();
         }
