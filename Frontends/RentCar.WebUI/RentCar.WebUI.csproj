@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Frontends\RentCar.Dtos\RentCar.ViewModels.csproj" />
+    <ProjectReference Include="..\RentCar.ViewModels\RentCar.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>

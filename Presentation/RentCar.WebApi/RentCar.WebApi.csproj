@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Infrastructure\RentCar.Dtos\RentCar.Bussiness.csproj" />
     <ProjectReference Include="..\..\Infrastructure\RentCar.Persistance\RentCar.Persistance.csproj" />
   </ItemGroup>
 

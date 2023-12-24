@@ -8,11 +8,14 @@ using RentCar.Application.Interfaces;
 using RentCar.Application.Interfaces.BlogInterfaces;
 using RentCar.Application.Interfaces.CarInterfaces;
 using RentCar.Application.Interfaces.CarPricingInterfaces;
+using RentCar.Application.Interfaces.RepositoryPattern.CommentRepositories;
 using RentCar.Application.Interfaces.TagCloudInterfaces;
+using RentCar.Bussiness.MapServices;
 using RentCar.Persistance.Repositories;
 using RentCar.Persistance.Repositories.BlogRepositories;
 using RentCar.Persistance.Repositories.CarPricingRepositories;
 using RentCar.Persistance.Repositories.CarRepositories;
+using RentCar.Persistance.Repositories.CommentRepositories;
 using RentCar.Persistance.Repositories.TagCloudRepositories;
 
 namespace RentCar.WebApi.Extensions
@@ -81,6 +84,14 @@ namespace RentCar.WebApi.Extensions
             services.AddScoped<CreateContactCommandHandler>();
             services.AddScoped<UpdateContactCommandHandler>();
             services.AddScoped<RemoveContactCommandHandler>();
+        }
+
+        public static void ConfigureCommentRegistration(this IServiceCollection services)
+        {
+
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped(typeof(ICommentRepository), typeof(CommentRepository));
+            services.AddScoped<CommentService>();
         }
     }
 }
