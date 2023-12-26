@@ -31,23 +31,19 @@ namespace RentCar.Bussiness.MapServices
                 
         public async Task CreateCommantAsync(CreateCommentDto commentDto)
         {
-            var comment = _mapper.Map<Comment>(commentDto);
-            await _repository.CreateAsync(comment);
+            await _repository.CreateAsync(_mapper.Map<Comment>(commentDto));
             await _repository.SaveAsync();
         }
 
         public async Task RemoveCommentAsync(int id)
         {
-            var comment = await _repository.GetByIdAsync(id);
-            _repository.RemoveAsync(comment);
+            _repository.RemoveAsync(await _repository.GetByIdAsync(id));
             await _repository.SaveAsync();
         }
 
         public async Task UpdateCommentAsync(GetCommentDto commentDto)
         {
-            var comment = await _repository.GetByIdAsync(commentDto.CommentId);
-            var updatedComment = _mapper.Map(commentDto, comment);
-            _repository.UpdateAsync(updatedComment);
+            _repository.UpdateAsync(_mapper.Map<Comment>(commentDto));
             await _repository.SaveAsync();
         }
     }

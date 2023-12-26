@@ -1,0 +1,55 @@
+﻿@model CreateCarVM
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Yeni Araç Girişi</h4>
+                    <hr/>
+                    <form action="CreateCar" method="post">
+                        <div class="form-group">
+                            <label for="@Model.BrandId">Marka</label>
+                            <select class="form-control" asp-for="@Model.BrandId" asp-items="@ViewBag.Brands">
+                                <option value="" disabled selected>Seçiniz</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="@Model.Model">Model</label>
+                            <input asp-for="@Model.Model" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="@Model.Km">KM</label>
+                            <input asp-for="@Model.Km" type="number" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="@Model.Transmission">Vites Tipi</label>
+                            <input asp-for="@Model.Transmission" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="@Model.Fuel">Yakıt Tipi</label>
+                            <input asp-for="@Model.Fuel" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="@Model.Seat">Koltuk Sayısı</label>
+                            <input asp-for="@Model.Seat" type="number" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="@Model.Luggage">Bagaj</label>
+                            <input asp-for="@Model.Luggage" type="number" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="@Model.BigImageUrl">Resim</label>
+                            <input asp-for="@Model.BigImageUrl" type="file" class="form-control">
+                        </div>        
+                        <div class="form-group">
+                            <label for="@Model.CoverImagerUrl">Resim</label>
+                            <input asp-for="@Model.CoverImagerUrl" type="file" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Kaydet</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

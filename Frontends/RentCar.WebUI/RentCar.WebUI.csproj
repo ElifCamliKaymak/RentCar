@@ -11,7 +11,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Frontends\RentCar.Dtos\RentCar.ViewModels.csproj" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\ViewComponents\NewFolder\" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\RentCar.ViewModels\RentCar.ViewModels.csproj" />
   </ItemGroup>
 
