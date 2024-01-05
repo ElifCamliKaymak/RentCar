@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h4>Marka Listesi</h4>
+                    <button asp-area="Admin"
+                            asp-controller="Brand"
+                            asp-action="CreateBrandPartial"
+                            type="button"
+                            class="btn btn-primary waves-effect waves-light mb-2"
+                            data-toggle="modal"
+                            data-target="#exampleModalCenter">
+                        <i class="mdi mdi-plus"></i>
+                        Yeni Marka Oluştur
+                    </button>
+                </div>
+
+                <table id="datatable-buttons" class="table table-striped dt-responsive nowrap">
+                    <thead>
+                        <tr>
+                            <th>İsim</th>
+                            <th>Seçenekler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var Brand in Model)
+                        {
+                            <tr>
+                                <td>@Brand.Name</td>
+                                <td>
+                                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                                        <a asp-action="BrandDetail" asp-route-id="@Brand.BrandId" type="button" class="btn btn-outline-dark waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Detaylar Gör">
+                                            <i class="mdi mdi-format-list-bulleted"></i>
+                                        </a>
+                                        <a asp-action="UpdateBrand" asp-route-id="@Brand.BrandId" type="button" class="btn btn-outline-warning waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Markayı Güncelle">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </a>
+                                        <a asp-action="RemoveBrand" asp-route-id="@Brand.BrandId" type="button" class="btn btn-outline-danger waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Markayı Sil">
+                                            <i class="mdi mdi-delete-outline"></i>
+                                        </a>
+                                        <a asp-controller="Car" asp-action="GetCarsWithBrandId" asp-route-id="@Brand.BrandId" type="button" class="btn btn-outline-secondary waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Markaya Ait Araçlar">
+                                            <i class="fas fa-angle-double-down"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="~/Areas/Admin/Views/Brand/CreateBrandPartial.cshtml" model="new CreateBrandVM()"></partial>
+

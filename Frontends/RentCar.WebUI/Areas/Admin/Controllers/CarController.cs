@@ -91,6 +91,19 @@ namespace RentCar.WebUI.Areas.Admin.Controllers
             return View();
         }
 
+        public async Task<IActionResult> GetCarsWithBrandId(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync($"https://localhost:7263/api/Cars/GetCarsByBrandId/{id}");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultCarsByBrandIdVM>>(jsonData);
+                return View(values);
+            }
+            return View();
+        }
+
         private async Task<SelectList> GetBrandsAsync()
         {
             var client = _httpClientFactory.CreateClient();
@@ -103,7 +116,6 @@ namespace RentCar.WebUI.Areas.Admin.Controllers
                 Value = x.BrandId.ToString(),
                 Text = x.Name
             }), "Value", "Text");
-
         }
     }
 }

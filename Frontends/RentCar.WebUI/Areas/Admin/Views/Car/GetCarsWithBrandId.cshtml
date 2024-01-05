@@ -1,7 +1,7 @@
-﻿@model List<ResultCarWithBrandsVM>
+﻿@model List<ResultCarsByBrandIdVM>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "GetCarsWithBrandId";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -10,23 +10,11 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-flex justify-content-between">
-                    <h4>Araba Listesi</h4>
-                    <button asp-area="Admin"
-                            asp-controller="Car"
-                            asp-action="CreateCarPartial"
-                            type="button"
-                            class="btn btn-primary waves-effect waves-light mb-2"
-                            data-toggle="modal"
-                            data-target="#exampleModalCenter">
-                        <i class="mdi mdi-plus"></i>
-                        Yeni Araç Oluştur
-                    </button>
+                    <h4>@Model.FirstOrDefault().BrandName Marka Araba Listesi</h4>
                 </div>
-
                 <table id="datatable-buttons" class="table table-striped dt-responsive nowrap">
                     <thead>
                         <tr>
-                            <th>Marka</th>
                             <th>Model</th>
                             <th>Vites Türü</th>
                             <th>Km</th>
@@ -38,7 +26,6 @@
                         @foreach (var car in Model)
                         {
                             <tr>
-                                <td>@car.BrandName</td>
                                 <td>@car.Model</td>
                                 <td>@car.Transmission</td>
                                 <td>@car.Km</td>
@@ -67,5 +54,3 @@
         </div>
     </div>
 </div>
-
-<partial name="~/Areas/Admin/Views/Car/CreateCarPartial.cshtml" model="new CreateCarVM()"></partial>

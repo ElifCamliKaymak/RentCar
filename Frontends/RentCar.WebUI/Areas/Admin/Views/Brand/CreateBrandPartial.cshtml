@@ -1,0 +1,21 @@
+﻿@model CreateBrandVM
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Yeni Marka Girişi</h4>
+                    <hr />
+                    <form asp-action="CreateBrand" method="post">
+                        <div class="form-group">
+                            <label for="@Model.Name">İsim</label>
+                            <input asp-for="@Model.Name" type="text" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Kaydet</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

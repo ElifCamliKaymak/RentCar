@@ -45,7 +45,7 @@ namespace RentCar.WebApi.Controllers
             return Ok("Brand bilgisi eklendi.");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveBrand(int id)
         {
             await _removeBrandCommandHandler.Handle(new RemoveBrandCommand(id));

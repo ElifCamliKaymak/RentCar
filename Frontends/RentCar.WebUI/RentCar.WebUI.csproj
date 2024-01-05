@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\RentCar.ViewModels\RentCar.ViewModels.csproj" />
   </ItemGroup>
 

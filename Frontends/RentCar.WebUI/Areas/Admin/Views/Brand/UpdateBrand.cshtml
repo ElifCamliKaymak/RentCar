@@ -1,7 +1,7 @@
-﻿@model UpdateFeatureVM
+﻿@model UpdateBrandVM
 
 @{
-    ViewData["Title"] = "UpdateFeature";
+    ViewData["Title"] = "UpdateBrand";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -9,9 +9,9 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Araç Özelliği Güncelleme</h4>
+                <h4 class="card-title">Marka Güncelleme</h4>
                 <form action="UpdateCar" method="post">
-                    <input type="hidden" asp-for="FeatureId" />
+                    <input type="hidden" asp-for="BrandId" />
                     <div class="row">
                         <div class="form-group col-6">
                             <label for="@Model.Name">İsim</label>
@@ -19,7 +19,7 @@
                         </div>
                     </div>
                     <div class="btn-group">
-                        <button type="submit" class="btn btn-primary waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Araç Özelliğini Kaydet">
+                        <button type="submit" class="btn btn-primary waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Markayı Kaydet">
                             <i class="feather-save"></i>
                         </button>
                         <a class="btn btn-light" asp-action="Index" data-toggle="tooltip" data-placement="bottom" title="Listeye Dön">

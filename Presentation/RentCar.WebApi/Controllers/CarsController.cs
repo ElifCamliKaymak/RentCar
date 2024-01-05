@@ -16,8 +16,9 @@ namespace RentCar.WebApi.Controllers
         private readonly RemoveCarCommandHandler _removeCarCommandHandler;
         private readonly GetCarWithBrandQueryHandler _getCarWithBrandQueryHandler;
         private readonly GetLastFiveCarsWithBrandQueryHandler _getLastFiveCarsWithBrandQueryHandler;
+        private readonly GetCarsByBrandIdQueryHandler _getCarsByBrandIdQueryHandler;
 
-        public CarsController(GetCarQueryHandler getCarQueryHandler, GetCarByIdQueryHandler getCarByIdQueryHandler, CreateCarCommandHandler createCarCommandHandler, UpdateCarCommandHandler updateCarCommandHandler, RemoveCarCommandHandler removeCarCommandHandler, GetCarWithBrandQueryHandler getCarWithBrandQueryHandler, GetLastFiveCarsWithBrandQueryHandler getLastFiveCarsWithBrandQueryHandler)
+        public CarsController(GetCarQueryHandler getCarQueryHandler, GetCarByIdQueryHandler getCarByIdQueryHandler, CreateCarCommandHandler createCarCommandHandler, UpdateCarCommandHandler updateCarCommandHandler, RemoveCarCommandHandler removeCarCommandHandler, GetCarWithBrandQueryHandler getCarWithBrandQueryHandler, GetLastFiveCarsWithBrandQueryHandler getLastFiveCarsWithBrandQueryHandler, GetCarsByBrandIdQueryHandler getCarsByBrandIdQueryHandler)
         {
             _getCarQueryHandler = getCarQueryHandler;
             _getCarByIdQueryHandler = getCarByIdQueryHandler;
@@ -26,6 +27,7 @@ namespace RentCar.WebApi.Controllers
             _removeCarCommandHandler = removeCarCommandHandler;
             _getCarWithBrandQueryHandler = getCarWithBrandQueryHandler;
             _getLastFiveCarsWithBrandQueryHandler = getLastFiveCarsWithBrandQueryHandler;
+            _getCarsByBrandIdQueryHandler = getCarsByBrandIdQueryHandler;
         }
 
         [HttpGet]
@@ -74,6 +76,13 @@ namespace RentCar.WebApi.Controllers
         public async Task<IActionResult> GetLastFiveCarsWithBrand()
         {
             var values = await _getLastFiveCarsWithBrandQueryHandler.Handle();
+            return Ok(values);
+        }     
+        
+        [HttpGet("GetCarsByBrandId/{id}")]
+        public async Task<IActionResult> GetCarsByBrandId(int id)
+        {
+            var values = await _getCarsByBrandIdQueryHandler.Handle(id);
             return Ok(values);
         }
     }

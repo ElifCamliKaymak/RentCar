@@ -21,6 +21,14 @@ namespace RentCar.Persistance.Repositories.CarRepositories
                 .ToListAsync();
         }
 
+        public async Task<List<Car>> GetCarListByBrandId(int id)
+        {
+            return await _context.Cars
+                .Include(x => x.Brand)
+                .Where(x=>x.BrandId == id)
+                .ToListAsync();
+        }
+
         public async Task<List<Car>> GetLastFiveCarsWithBrandsAsync()
         {
             var values = await _context.Cars

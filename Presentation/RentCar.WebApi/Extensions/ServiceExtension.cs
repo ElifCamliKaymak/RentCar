@@ -67,6 +67,7 @@ namespace RentCar.WebApi.Extensions
             services.AddScoped<RemoveCarCommandHandler>();
             services.AddScoped<GetCarWithBrandQueryHandler>();
             services.AddScoped<GetLastFiveCarsWithBrandQueryHandler>();
+            services.AddScoped<GetCarsByBrandIdQueryHandler>();
         }        
         
         public static void ConfigureCategoryRegistration(this IServiceCollection services)
