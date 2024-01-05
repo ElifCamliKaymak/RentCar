@@ -11,7 +11,13 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between">
                     <h4>Araba Listesi</h4>
-                    <button asp-area="Admin" asp-controller="Car" asp-action="CreateCarPartial" type="button" class="btn btn-primary waves-effect waves-light mb-2" data-toggle="modal" data-target="#exampleModalCenter">
+                    <button asp-area="Admin"
+                            asp-controller="Car"
+                            asp-action="CreateCarPartial"
+                            type="button"
+                            class="btn btn-primary waves-effect waves-light mb-2"
+                            data-toggle="modal"
+                            data-target="#exampleModalCenter">
                         <i class="mdi mdi-plus"></i>
                         Yeni Araç Oluştur
                     </button>
@@ -39,10 +45,17 @@
                                 <td>@car.Fuel</td>
                                 <td>
                                     <div class="btn-group mr-2" role="group" aria-label="First group">
-                                        <a asp-action="CarDetail" asp-route-id="@car.CarId" type="button" class="btn btn-outline-dark waves-effect waves-light">
+                                        <a asp-area="Admin"
+                                           asp-controller="Car"
+                                           asp-action="CarDetail"
+                                           asp-route-id="@car.CarId"
+                                           type="button"
+                                           class="btn btn-outline-dark waves-effect waves-light"
+                                           data-toggle="modal"
+                                           data-target="#exampleModalCenter">
                                             <i class="mdi mdi-format-list-bulleted"></i>
                                         </a>
-                                        <a asp-action="UpdateCar" asp-route-id="@car.CarId" type="button" class="btn btn-outline-warning waves-effect waves-light">
+                                        <a asp-action="UpdateCar" asp-route-id="@car.CarId" type="button" class="btn btn-outline-warning waves-effect waves-light" >
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
                                         <a asp-action="RemoveCar" asp-route-id="@car.CarId" type="button" class="btn btn-outline-danger waves-effect waves-light">
@@ -60,4 +73,3 @@
 </div>
 
 <partial name="~/Areas/Admin/Views/Car/CreateCarPartial.cshtml" model="new CreateCarVM()"></partial>
-

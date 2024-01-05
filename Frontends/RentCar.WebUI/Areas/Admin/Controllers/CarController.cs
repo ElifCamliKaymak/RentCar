@@ -40,7 +40,7 @@ namespace RentCar.WebUI.Areas.Admin.Controllers
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.PostAsync("https://localhost:7263/api/Cars", content);
 
-            if(responseMessage.IsSuccessStatusCode)
+            if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index");
             }
@@ -57,6 +57,38 @@ namespace RentCar.WebUI.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> UpdateCar(int id)
+        {
+            ViewBag.Brands = await GetBrandsAsync();
+
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync($"https://localhost:7263/api/Cars/{id}");
+
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var value = JsonConvert.DeserializeObject<UpdateCarVM>(jsonData);
+                return View(value);
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateCar(UpdateCarVM updateCarVM)
+        {
+            var jsonData = JsonConvert.SerializeObject(updateCarVM);
+            StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.PutAsync("https://localhost:7263/api/Cars", content);
+
+            if (responseMessage.IsSuccessStatusCode)
+                return RedirectToAction("Index");
+            
+            return View();
         }
 
         private async Task<SelectList> GetBrandsAsync()
