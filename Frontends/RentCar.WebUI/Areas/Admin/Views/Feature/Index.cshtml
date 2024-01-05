@@ -1,0 +1,67 @@
+﻿@model List<ResultFeatureVM>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h4>Araba Özellikleri Listesi</h4>
+                    <button asp-area="Admin"
+                            asp-controller="Feature"
+                            asp-action="CreateFeaturePartial"
+                            type="button"
+                            class="btn btn-primary waves-effect waves-light mb-2"
+                            data-toggle="modal"
+                            data-target="#exampleModalCenter">
+                        <i class="mdi mdi-plus"></i>
+                        Yeni Araç Oluştur
+                    </button>
+                </div>
+
+                <table id="datatable-buttons" class="table table-striped dt-responsive nowrap">
+                    <thead>
+                        <tr>
+                            <th>İsim</th>
+                            <th>Seçenekler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var feature in Model)
+                        {
+                            <tr>
+                                <td>@feature.Name</td>
+                                <td>
+                                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                                        <a asp-area="Admin"
+                                           asp-controller="Feature"
+                                           asp-action="FeatureDetail"
+                                           asp-route-id="@feature.FeatureId"
+                                           type="button"
+                                           class="btn btn-outline-dark waves-effect waves-light"
+                                           data-toggle="modal"
+                                           data-target="#exampleModalCenter">
+                                            <i class="mdi mdi-format-list-bulleted"></i>
+                                        </a>
+                                        <a asp-action="UpdateFeature" asp-route-id="@feature.FeatureId" type="button" class="btn btn-outline-warning waves-effect waves-light">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </a>
+                                        <a asp-action="RemoveFeature" asp-route-id="@feature.FeatureId" type="button" class="btn btn-outline-danger waves-effect waves-light">
+                                            <i class="mdi mdi-delete-outline"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="~/Areas/Admin/Views/Feature/CreateFeaturePartial.cshtml" model="new CreateFeatureVM()"></partial>
