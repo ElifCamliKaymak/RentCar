@@ -12,7 +12,7 @@
                 <h4 class="card-title">Araç Güncelleme</h4>
                 <hr />
                 <form action="UpdateCar" method="post">
-                    <input type="hidden" asp-for="CarId"/>
+                    <input type="hidden" asp-for="CarId" />
                     <div class="row">
                         <div class="form-group col-6">
                             <label for="@Model.BrandId">Marka</label>
@@ -61,7 +61,14 @@
                             <input asp-for="@Model.CoverImagerUrl" type="text" class="form-control">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary waves-effect waves-light col-2">Kaydet</button>
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-primary waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Aracı Kaydet">
+                            <i class="feather-save"></i>
+                        </button>
+                        <a class="btn btn-light" asp-action="Index" data-toggle="tooltip" data-placement="bottom" title="Listeye Dön">
+                            <i class="fas fa-list"></i>
+                        </a>
+                    </div>
                 </form>
             </div>
         </div>

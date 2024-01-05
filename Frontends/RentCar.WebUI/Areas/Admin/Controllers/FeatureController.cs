@@ -46,19 +46,46 @@ namespace RentCar.WebUI.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        private async Task<SelectList> GetBrandsAsync()
+        [HttpGet]
+        public async Task<IActionResult> UpdateFeature(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7263/api/Brands");
-            var jsonData = await responseMessage.Content.ReadAsStringAsync();
-            var values = JsonConvert.DeserializeObject<List<ResultBrandVM>>(jsonData);
+            var responseMessage = await client.GetAsync($"https://localhost:7263/api/Features/{id}");
 
-            return new SelectList(values.Select(x => new SelectListItem
+            if (responseMessage.IsSuccessStatusCode)
             {
-                Value = x.BrandId.ToString(),
-                Text = x.Name
-            }), "Value", "Text");
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var value = JsonConvert.DeserializeObject<UpdateFeatureVM>(jsonData);
+                return View(value);
+            }
+            return RedirectToAction("Index");
+        }
 
+        [HttpPost]
+        public async Task<IActionResult> UpdateFeature(UpdateFeatureVM updateFeatureVM)
+        {
+            var jsonData = JsonConvert.SerializeObject(updateFeatureVM);
+            StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.PutAsync("https://localhost:7263/api/Features/", content);
+
+            if (responseMessage.IsSuccessStatusCode)
+                return RedirectToAction("Index");
+
+            return View();
+        }
+
+        public async Task<IActionResult> RemoveFeature(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.DeleteAsync($"https://localhost:7263/api/Features/{id}");
+
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
         }
     }
 }

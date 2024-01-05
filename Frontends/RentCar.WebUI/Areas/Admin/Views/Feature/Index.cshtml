@@ -19,7 +19,7 @@
                             data-toggle="modal"
                             data-target="#exampleModalCenter">
                         <i class="mdi mdi-plus"></i>
-                        Yeni Araç Oluştur
+                        Yeni Araç Özelliği Oluştur
                     </button>
                 </div>
 
@@ -37,20 +37,13 @@
                                 <td>@feature.Name</td>
                                 <td>
                                     <div class="btn-group mr-2" role="group" aria-label="First group">
-                                        <a asp-area="Admin"
-                                           asp-controller="Feature"
-                                           asp-action="FeatureDetail"
-                                           asp-route-id="@feature.FeatureId"
-                                           type="button"
-                                           class="btn btn-outline-dark waves-effect waves-light"
-                                           data-toggle="modal"
-                                           data-target="#exampleModalCenter">
+                                        <a asp-action="FeatureDetail" asp-route-id="@feature.FeatureId" type="button" class="btn btn-outline-dark waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Detaylar Gör">
                                             <i class="mdi mdi-format-list-bulleted"></i>
                                         </a>
-                                        <a asp-action="UpdateFeature" asp-route-id="@feature.FeatureId" type="button" class="btn btn-outline-warning waves-effect waves-light">
+                                        <a asp-action="UpdateFeature" asp-route-id="@feature.FeatureId" type="button" class="btn btn-outline-warning waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Özelliği Güncelle">
                                             <i class="fas fa-pencil-alt"></i>
                                         </a>
-                                        <a asp-action="RemoveFeature" asp-route-id="@feature.FeatureId" type="button" class="btn btn-outline-danger waves-effect waves-light">
+                                        <a asp-action="RemoveFeature" asp-route-id="@feature.FeatureId" type="button" class="btn btn-outline-danger waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Özelliği Sil">
                                             <i class="mdi mdi-delete-outline"></i>
                                         </a>
                                     </div>
