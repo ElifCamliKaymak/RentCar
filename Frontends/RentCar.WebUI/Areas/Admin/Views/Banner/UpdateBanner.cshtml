@@ -1,0 +1,45 @@
+﻿@model UpdateBannerVM
+@{
+    ViewData["Title"] = "UpdateBanner";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Marka Güncelleme</h4>
+                <form action="UpdateBanner" method="post">
+                    <input type="hidden" asp-for="BannerId" />
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label for="@Model.Title">Başlık</label>
+                            <input asp-for="@Model.Title" type="text" class="form-control">
+                        </div>                        
+                        <div class="form-group col-6">
+                            <label for="@Model.Description">Açıklama</label>
+                            <input asp-for="@Model.Description" type="text" class="form-control">
+                        </div>
+                    </div>                    
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label for="@Model.VideoUrl">Video URL</label>
+                            <input asp-for="@Model.VideoUrl" type="text" class="form-control" placeholder="Video'nun Youtube Embed Linkini Giriniz">
+                        </div>                        
+                        <div class="form-group col-6">
+                            <label for="@Model.VideoDescription">Video Açıklaması</label>
+                            <input asp-for="@Model.VideoDescription" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-primary waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Markayı Kaydet">
+                            <i class="feather-save"></i>
+                        </button>
+                        <a class="btn btn-light" asp-action="Index" data-toggle="tooltip" data-placement="bottom" title="Listeye Dön">
+                            <i class="fas fa-list"></i>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

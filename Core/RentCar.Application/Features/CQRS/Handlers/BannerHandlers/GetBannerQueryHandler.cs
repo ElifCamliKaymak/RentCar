@@ -13,16 +13,16 @@ namespace RentCar.Application.Features.CQRS.Handlers.BannerHandlers
             _repository = repository;
         }
 
-        public async Task<List<GetBannerQueryResult>> Handle() 
+        public async Task<List<GetBannerQueryResult>> Handle()
         {
             var values = await _repository.GetAllAsync();
-            return values.Select(x=> new GetBannerQueryResult
+            return values.Select(x => new GetBannerQueryResult
             {
                 BannerId = x.BannerId,
-                Title=x.Title,
-                Description=x.Description,
-                VideoDescription=x.VideoDescription,
-                VideoUrl=x.VideoUrl
+                Title = x.Title,
+                Description = x.Description,
+                VideoDescription = x.VideoDescription,
+                VideoUrl = x.VideoUrl
             }).ToList();
         }
     }

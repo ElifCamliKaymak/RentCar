@@ -1,0 +1,33 @@
+﻿@model CreateBannerVM
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Yeni Banner Girişi</h4>
+                    <hr />
+                    <form asp-action="CreateBanner" method="post">
+                        <div class="form-group">
+                            <label for="@Model.Title">Başlık</label>
+                            <input asp-for="@Model.Title" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="@Model.Description">Açıklama</label>
+                            <input asp-for="@Model.Description" type="text" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="@Model.VideoUrl">Video URL</label>
+                            <input asp-for="@Model.VideoUrl" type="text" class="form-control" placeholder="Video'nun Youtube Embed Linkini Giriniz">
+                        </div>
+                        <div class="form-group">
+                            <label for="@Model.VideoDescription">Video Açıklaması</label>
+                            <input asp-for="@Model.VideoDescription" type="text" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Kaydet</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+﻿@model List<ResultBannerVM>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h4>Ana Sayfa Banner Alanı</h4>
+                    <button asp-area="Admin"
+                            asp-controller="Banner"
+                            asp-action="CreateBannerPartial"
+                            type="button"
+                            class="btn btn-primary waves-effect waves-light mb-2"
+                            data-toggle="modal"
+                            data-target="#exampleModalCenter">
+                        <i class="mdi mdi-plus"></i>
+                        Yeni Banner Oluştur
+                    </button>
+                </div>
+
+                <table id="datatable-buttons" class="table table-striped dt-responsive nowrap">
+                    <thead>
+                        <tr>
+                            <th>Başlık</th>
+                            <th>Açıklama</th>
+                            <th>Video URL</th>
+                            <th>Video Açıklama</th>
+                            <th>Seçenekler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var banner in Model)
+                        {
+                            <tr>
+                                <td>@banner.Title</td>
+                                <td>@banner.Description</td>
+                                <td>@banner.VideoUrl</td>
+                                <td>@banner.VideoDescription</td>
+                                <td>
+                                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                                        <a asp-action="BannerDetail" asp-route-id="@banner.BannerId" type="button" class="btn btn-outline-dark waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Detaylar Gör">
+                                            <i class="mdi mdi-format-list-bulleted"></i>
+                                        </a>
+                                        <a asp-action="UpdateBanner" asp-route-id="@banner.BannerId" type="button" class="btn btn-outline-warning waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Bannerı Güncelle">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </a>
+                                        <a asp-action="RemoveBanner" asp-route-id="@banner.BannerId" type="button" class="btn btn-outline-danger waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Bannerı Sil">
+                                            <i class="mdi mdi-delete-outline"></i>
+                                        </a>
+                                        <a asp-action="GetCarsWithBannerId" asp-route-id="@banner.BannerId" type="button" class="btn btn-danger waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Youtube'da İzle">
+                                            <i class="fab fa-youtube"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="~/Areas/Admin/Views/Banner/CreateBannerPartial.cshtml" model="new CreateBannerVM()"></partial>
+

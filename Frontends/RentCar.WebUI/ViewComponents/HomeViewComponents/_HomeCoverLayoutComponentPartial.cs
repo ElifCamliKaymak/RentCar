@@ -21,7 +21,8 @@ namespace RentCar.WebUI.ViewComponents.HomeViewComponents
             {
                 var jsonData=await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultBannerVM>>(jsonData);
-                return View(values);
+                var value = values.LastOrDefault();
+                return View(value);
             }
             return View();
         }
