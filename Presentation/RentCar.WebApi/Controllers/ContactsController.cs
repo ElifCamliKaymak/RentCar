@@ -45,7 +45,7 @@ namespace RentCar.WebApi.Controllers
             return Ok("İletişim bilgisi eklendi.");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveContact(int id)
         {
             await _removeContactCommandHandler.Handle(new RemoveContactCommand(id));

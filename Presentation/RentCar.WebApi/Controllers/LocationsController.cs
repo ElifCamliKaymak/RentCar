@@ -37,7 +37,7 @@ namespace RentCar.WebApi.Controllers
             return Ok("Konum başarıyla eklendi.");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveLocation(int id)
         {
             await _mediator.Send(new RemoveLocationCommand(id));

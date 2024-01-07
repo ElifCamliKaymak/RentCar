@@ -46,7 +46,7 @@ namespace RentCar.WebApi.Controllers
             return Ok("Hakkımda bilgisi eklendi");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveAbout(int id)
         {
             await _removeAboutCommandHandler.Handle(new RemoveAboutCommand(id));

@@ -36,7 +36,7 @@ namespace RentCar.WebApi.Controllers
             return Ok("Footer Address başarıyla eklendi.");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveFooterAdress(int id)
         {
             await _mediator.Send(new RemoveFooterAddressCommand(id));

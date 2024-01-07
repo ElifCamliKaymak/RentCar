@@ -40,7 +40,7 @@ namespace RentCar.WebApi.Controllers
             return Ok("Yorumunuz gönderilmiştir.");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveComment(int id)
         {
             await _service.RemoveCommentAsync(id);

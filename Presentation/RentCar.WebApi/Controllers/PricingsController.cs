@@ -38,7 +38,7 @@ namespace RentCar.WebApi.Controllers
             return Ok("Ödeme bilgisi eklendi.");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> RemovePricing(int id)
         {
             await _mediator.Send(new RemovePricingCommand(id));

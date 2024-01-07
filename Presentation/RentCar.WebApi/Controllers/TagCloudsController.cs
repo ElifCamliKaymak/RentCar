@@ -37,7 +37,7 @@ namespace RentCar.WebApi.Controllers
             return Ok("Etiket bulutu bilgisi eklendi.");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> RemoveTagCloud(int id)
         {
             await _mediator.Send(new RemoveTagCloudCommand(id));

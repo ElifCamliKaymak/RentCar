@@ -1,7 +1,7 @@
-﻿@model UpdateBannerVM
+﻿@model UpdateAboutVM
 
 @{
-    ViewData["Title"] = "UpdateBanner";
+    ViewData["Title"] = "UpdateAbout";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -9,31 +9,27 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Banner Güncelleme</h4>
+                <h4 class="card-title">Hakkımda Güncelleme</h4>
                 <form action="UpdateBanner" method="post">
-                    <input type="hidden" asp-for="BannerId" />
+                    <input type="hidden" asp-for="AboutId" />
                     <div class="row">
                         <div class="form-group col-6">
                             <label for="@Model.Title">Başlık</label>
                             <input asp-for="@Model.Title" type="text" class="form-control">
-                        </div>                        
+                        </div>
                         <div class="form-group col-6">
                             <label for="@Model.Description">Açıklama</label>
-                            <input asp-for="@Model.Description" type="text" class="form-control">
+                            <textarea rows="5" asp-for="@Model.Description" type="text" class="form-control"></textarea>
                         </div>
-                    </div>                    
+                    </div>
                     <div class="row">
                         <div class="form-group col-6">
-                            <label for="@Model.VideoUrl">Video URL</label>
-                            <input asp-for="@Model.VideoUrl" type="text" class="form-control" placeholder="Video'nun Youtube Embed Linkini Giriniz">
-                        </div>                        
-                        <div class="form-group col-6">
-                            <label for="@Model.VideoDescription">Video Açıklaması</label>
-                            <input asp-for="@Model.VideoDescription" type="text" class="form-control">
+                            <label for="@Model.ImageUrl">Fotoğraf URL</label>
+                            <input asp-for="@Model.ImageUrl" type="text" class="form-control" placeholder="Kapak Fotoğrafının Linkini Giriniz">
                         </div>
                     </div>
                     <div class="btn-group">
-                        <button type="submit" class="btn btn-primary waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Bannerı Kaydet">
+                        <button type="submit" class="btn btn-primary waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Hakkımdayı Kaydet">
                             <i class="feather-save"></i>
                         </button>
                         <a class="btn btn-light" asp-action="Index" data-toggle="tooltip" data-placement="bottom" title="Listeye Dön">

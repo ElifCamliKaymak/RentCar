@@ -39,7 +39,7 @@ namespace RentCar.WebApi.Controllers
             return Ok("Blog bilgisi eklendi.");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBlog(int id)
         {
             await _mediator.Send(new RemoveBlogCommand(id));
