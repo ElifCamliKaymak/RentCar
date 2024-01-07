@@ -50,7 +50,7 @@
                                         <a asp-action="RemoveAuthor" asp-route-id="@author.AuthorId" type="button" class="btn btn-outline-danger waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Yazarı Sil">
                                             <i class="mdi mdi-delete-outline"></i>
                                         </a>
-                                        <a asp-controller="Blog" asp-action="#" asp-route-id="@author.AuthorId" type="button" class="btn btn-outline-secondary waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Yazara Ait Bloglar">
+                                        <a asp-controller="Blog" asp-action="GetBlogsOfAuthors" asp-route-authorId="@author.AuthorId" type="button" class="btn btn-outline-secondary waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Yazara Ait Bloglar">
                                             <i class="fas fa-angle-double-down"></i>
                                         </a>
                                     </div>

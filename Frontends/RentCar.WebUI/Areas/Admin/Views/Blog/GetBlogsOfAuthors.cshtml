@@ -1,0 +1,58 @@
+﻿@model List<ResultBlogsOfAuthorsVM>
+@{
+    ViewData["Title"] = "GetBlogsOfAuthors";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h4>@Model.FirstOrDefault().authorName Yazarının Blogları Listesi</h4>
+                </div>
+
+                <table id="datatable-buttons" class="table table-striped dt-responsive nowrap">
+                    <thead>
+                        <tr>
+                            <th>Kapak Fotoğrafı</th>
+                            <th>Kategori Adı</th>
+                            <th>Yayın Tarihi</th>
+                            <th>Başlık</th>
+                            <th>Açıklama</th>
+                            <th>Seçenekler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var blog in Model)
+                        {
+                            <tr>
+                                <td><img src="@blog.coverImageUrl" width="50" height="50" /></td>
+                                <td>@blog.categoryName</td>
+                                <td>@blog.createdDate</td>
+                                <td>@blog.title</td>
+                                <td>@blog.description</td>
+                                <td>
+                                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                                        <a asp-action="AuthorDetail" asp-route-id="@blog.blogId" type="button" class="btn btn-outline-dark waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Detaylar Gör">
+                                            <i class="mdi mdi-format-list-bulleted"></i>
+                                        </a>
+                                        <a asp-action="UpdateAuthor" asp-route-id="@blog.blogId" type="button" class="btn btn-outline-warning waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Yazarı Güncelle">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </a>
+                                        <a asp-action="RemoveAuthor" asp-route-id="@blog.blogId" type="button" class="btn btn-outline-danger waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Yazarı Sil">
+                                            <i class="mdi mdi-delete-outline"></i>
+                                        </a>
+                                        <a asp-controller="Blog" asp-action="GetBlogsOfAuthors" asp-route-id="@blog.blogId" type="button" class="btn btn-outline-secondary waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Yazara Ait Bloglar">
+                                            <i class="fas fa-angle-double-down"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
