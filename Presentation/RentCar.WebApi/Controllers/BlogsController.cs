@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using RentCar.Application.Features.Mediator.Commands.BlogCommands;
 using RentCar.Application.Features.Mediator.Queries.BlogQueries;
 using RentCar.Application.Features.Mediator.Results.BlogResults;
+using RentCar.Domain.Entities;
 
 namespace RentCar.WebApi.Controllers
 {
@@ -71,6 +72,13 @@ namespace RentCar.WebApi.Controllers
         public async Task<IActionResult> GetBlogByAuthorList(int id)
         {
             var values = await _mediator.Send(new GetBlogByAuthorIdQuery(id));
+            return Ok(values);
+        }
+
+        [HttpGet("GetBlogsOfAuthors/{authorId}")]
+        public async Task<IActionResult> GetBlogsOfAuthors(int authorId)
+        {
+            var values = await _mediator.Send(new GetBlogsOfAuthorsQuery(authorId));
             return Ok(values);
         }
     }
