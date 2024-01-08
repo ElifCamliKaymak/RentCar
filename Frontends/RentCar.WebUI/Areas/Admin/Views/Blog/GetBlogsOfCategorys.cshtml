@@ -1,6 +1,6 @@
 ﻿@model List<ResultBlogsOfAuthorsVM>
 @{
-    ViewData["Title"] = "GetBlogsOfAuthors";
+    ViewData["Title"] = "GetBlogsOfCategorys";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -9,14 +9,14 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-flex justify-content-between">
-                    <h4>@Model.FirstOrDefault().authorName Yazarının Blogları Listesi</h4>
+                    <h4>@Model.FirstOrDefault().categoryName Kategorisinin Blogları Listesi</h4>
                 </div>
 
                 <table id="datatable-buttons" class="table table-striped dt-responsive nowrap">
                     <thead>
                         <tr>
                             <th>Kapak Fotoğrafı</th>
-                            <th>Kategori Adı</th>
+                            <th>Yazar Adı</th>
                             <th>Yayın Tarihi</th>
                             <th>Başlık</th>
                             <th>Açıklama</th>
@@ -28,7 +28,7 @@
                         {
                             <tr>
                                 <td><img src="@blog.coverImageUrl" width="50" height="50" /></td>
-                                <td>@blog.categoryName</td>
+                                <td>@blog.authorName</td>
                                 <td>@blog.createdDate</td>
                                 <td>@blog.title</td>
                                 <td>@blog.description</td>
