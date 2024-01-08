@@ -10,7 +10,7 @@ namespace RentCar.WebApi.Mapping
         public MapProfile()
         {
             CreateMap<CreateCommentDto, Comment>();
-            CreateMap<Comment, GetCommentDto>().ReverseMap();
+            CreateMap<Comment, GetCommentDto>();
         }
         
     }

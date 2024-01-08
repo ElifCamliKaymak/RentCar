@@ -73,17 +73,24 @@ namespace RentCar.WebApi.Controllers
             return Ok(values);
         }
 
-        [HttpGet("GetBlogsOfAuthors/{authorId}")]
-        public async Task<IActionResult> GetBlogsOfAuthors(int authorId)
+        [HttpGet("GetBlogsOfAuthors/{id}")]
+        public async Task<IActionResult> GetBlogsOfAuthors(int id)
         {
-            var values = await _mediator.Send(new GetBlogsOfAuthorsQuery(authorId));
+            var values = await _mediator.Send(new GetBlogsOfAuthorsQuery(id));
             return Ok(values);
         }
 
-        [HttpGet("GetBlogsOfCategorys/{categoryId}")]
-        public async Task<IActionResult> GetBlogsOfCategorys(int categoryId)
+        [HttpGet("GetBlogsOfCategorys/{id}")]
+        public async Task<IActionResult> GetBlogsOfCategorys(int id)
         {
-            var values = await _mediator.Send(new GetBlogsOfAuthorsQuery(categoryId));
+            var values = await _mediator.Send(new GetBlogsOfCategorysQuery(id));
+            return Ok(values);
+        }
+
+        [HttpGet("GetBlogWithDetails/{id}")]
+        public async Task<IActionResult> GetBlogWithDetails(int id)
+        {
+            var values = await _mediator.Send(new GetBlogWithDetailsQuery(id));
             return Ok(values);
         }
     }

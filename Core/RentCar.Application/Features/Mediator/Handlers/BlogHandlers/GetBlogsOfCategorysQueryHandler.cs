@@ -5,18 +5,19 @@ using RentCar.Application.Interfaces.BlogInterfaces;
 
 namespace RentCar.Application.Features.Mediator.Handlers.BlogHandlers
 {
-    public class GetBlogsOfAuthorsQueryHandler : IRequestHandler<GetBlogsOfAuthorsQuery, List<GetBlogsOfAuthorsQueryResult>>
+    public class GetBlogsOfCategorysQueryHandler : IRequestHandler<GetBlogsOfCategorysQuery, List<GetBlogsOfCategorysQueryResult>>
     {
         private readonly IBlogRepository _blogRepository;
 
-        public GetBlogsOfAuthorsQueryHandler(IBlogRepository blogRepository)
+        public GetBlogsOfCategorysQueryHandler(IBlogRepository blogRepository)
         {
             _blogRepository = blogRepository;
         }
-        public async Task<List<GetBlogsOfAuthorsQueryResult>> Handle(GetBlogsOfAuthorsQuery request, CancellationToken cancellationToken)
+
+        public async Task<List<GetBlogsOfCategorysQueryResult>> Handle(GetBlogsOfCategorysQuery request, CancellationToken cancellationToken)
         {
-            var values = await _blogRepository.GetBlogsOfAuthors(request.Id);
-            return values.Select(x => new GetBlogsOfAuthorsQueryResult
+            var values = await _blogRepository.GetBlogsOfCategorys(request.Id);
+            return values.Select(x => new GetBlogsOfCategorysQueryResult
             {
                 AuthorName = x.Author.Name,
                 BlogId = x.BlogId,

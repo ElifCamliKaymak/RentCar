@@ -1,6 +1,6 @@
 ﻿namespace RentCar.Application.Features.Mediator.Results.BlogResults
 {
-    public class GetBlogsOfAuthorsQueryResult
+    public class GetBlogWithDetailsQueryResult
     {
         public int BlogId { get; set; }
         public string Title { get; set; }

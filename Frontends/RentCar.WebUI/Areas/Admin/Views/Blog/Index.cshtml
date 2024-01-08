@@ -1,0 +1,57 @@
+﻿@model List<ResultBlogVM>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h4>Blog Listesi</h4>
+                </div>
+                <table id="datatable-buttons" class="table table-striped dt-responsive nowrap">
+                    <thead>
+                        <tr>
+                            <th>Kapak Fotoğrafı</th>
+                            <th>Kategori Adı</th>
+                            <th>Yazar Adı</th>
+                            <th>Yayın Tarihi</th>
+                            <th>Başlık</th>
+                            <th>Açıklama</th>
+                            <th>Seçenekler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var blog in Model)
+                        {
+                            <tr>
+                                <td><img src="@blog.coverImageUrl" width="50" height="50" /></td>
+                                <td>@blog.categoryName</td>
+                                <td>@blog.authorName</td>
+                                <td>@blog.createdDate</td>
+                                <td>@blog.title</td>
+                                <td>@blog.description</td>
+                                <td>
+                                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                                        <a asp-action="GetBlog" asp-route-id="@blog.blogId" type="button" class="btn btn-outline-dark waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Blogu Aç">
+                                            <i class="mdi mdi-format-list-bulleted"></i>
+                                        </a>
+                                        <a asp-action="#" asp-route-id="@blog.blogId" type="button" class="btn btn-outline-warning waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Blogun Yorumları">
+                                            <i class="far fa-comments"></i>
+                                        </a>
+                                        <a asp-action="RemoveBlog" asp-route-id="@blog.blogId" type="button" class="btn btn-outline-danger waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Blogu Sil">
+                                            <i class="mdi mdi-delete-outline"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

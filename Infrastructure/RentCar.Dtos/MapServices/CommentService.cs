@@ -28,6 +28,12 @@ namespace RentCar.Bussiness.MapServices
             var comment = await _repository.GetByIdAsync(id);
             return _mapper.Map<GetCommentDto>(comment);
         }
+        public async Task<List<GetCommentDto>> CommentListByBlogAsync(int id)
+        {
+            var comment = await _repository.GetCommentsByBlogAsync(id);
+            return _mapper.Map<List<GetCommentDto>>(comment);
+           
+        }
                 
         public async Task CreateCommantAsync(CreateCommentDto commentDto)
         {

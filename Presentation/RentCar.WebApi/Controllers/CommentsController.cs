@@ -32,6 +32,13 @@ namespace RentCar.WebApi.Controllers
             var value = await _service.GetCommentAsync(id);
             return Ok(value);
         }
+        
+        [HttpGet("CommentListByBlog/{id}")]
+        public async Task<IActionResult> CommentListByBlog(int id)
+        {
+            var value = await _service.CommentListByBlogAsync(id);
+            return Ok(value);
+        }
 
         [HttpPost]
         public async Task<IActionResult> CreateComment(CreateCommentDto commentDto)
