@@ -1,0 +1,58 @@
+﻿@model List<ResultContactVM>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h4>Mesajlar Listesi</h4>
+                </div>
+
+                <table id="datatable-buttons" class="table table-striped dt-responsive nowrap">
+                    <thead>
+                        <tr>
+                            <th>Mesaj Konusu</th>
+                            <th>İsim</th>
+                            <th>Mail adresi</th>
+                            <th>Gönderilme Tarihi</th>
+                            <th>Mesaj İçeriği</th>
+                            <th>Seçenekler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var contact in Model)
+                        {
+                            <tr>
+                                <td>@contact.Subject</td>
+                                <td>@contact.Name</td>
+                                <td>@contact.Email</td>
+                                <td>@contact.SendDate.ToShortDateString()</td>
+                                <td>@contact.Message</td>
+                                <td>
+                                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                                        <a asp-action="ContactDetail" asp-route-id="@contact.ContactId" type="button" class="btn btn-outline-dark waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Detaylar Gör">
+                                            <i class="mdi mdi-format-list-bulleted"></i>
+                                        </a>
+                                        <a asp-action="UpdateContact" asp-route-id="@contact.ContactId" type="button" class="btn btn-outline-warning waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Yazarı Güncelle">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </a>
+                                        <a asp-action="RemoveContact" asp-route-id="@contact.ContactId" type="button" class="btn btn-outline-danger waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Yazarı Sil">
+                                            <i class="mdi mdi-delete-outline"></i>
+                                        </a>
+                                        <a asp-controller="Blog" asp-action="GetBlogsOfContacts" asp-route-id="@contact.ContactId" type="button" class="btn btn-outline-secondary waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Kategoriye Ait Bloglar">
+                                            <i class="fas fa-angle-double-down"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
