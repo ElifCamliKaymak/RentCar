@@ -54,10 +54,10 @@ namespace RentCar.WebUI.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ResultBlogsOfAuthors(int authorId)
+        public async Task<IActionResult> GetBlogsOfAuthors(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"https://localhost:7263/api/Blogs/ResultBlogsOfAuthors/{authorId}");
+            var responseMessage = await client.GetAsync($"https://localhost:7263/api/Blogs/GetBlogsOfAuthors/{id}");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -68,10 +68,10 @@ namespace RentCar.WebUI.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetBlogsOfCategorys(int categoryId)
+        public async Task<IActionResult> GetBlogsOfCategorys(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"https://localhost:7263/api/Blogs/GetBlogsOfCategorys/{categoryId}");
+            var responseMessage = await client.GetAsync($"https://localhost:7263/api/Blogs/GetBlogsOfCategorys/{id}");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();

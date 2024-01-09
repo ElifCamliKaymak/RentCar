@@ -34,13 +34,13 @@
                                 <td>@blog.description</td>
                                 <td>
                                     <div class="btn-group mr-2" role="group" aria-label="First group">
-                                        <a asp-action="AuthorDetail" asp-route-id="@blog.blogId" type="button" class="btn btn-outline-dark waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Detaylar Gör">
+                                        <a asp-action="GetBlog" asp-route-id="@blog.blogId" type="button" class="btn btn-outline-dark waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Blogu Aç">
                                             <i class="mdi mdi-format-list-bulleted"></i>
                                         </a>
-                                        <a asp-action="UpdateAuthor" asp-route-id="@blog.blogId" type="button" class="btn btn-outline-warning waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Yazarı Güncelle">
-                                            <i class="fas fa-pencil-alt"></i>
+                                        <a asp-controller="Comment" asp-action="GetCommentsByBlog" asp-route-id="@blog.blogId" type="button" class="btn btn-outline-warning waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Blogun Yorumları">
+                                            <i class="far fa-comments"></i>
                                         </a>
-                                        <a asp-action="RemoveAuthor" asp-route-id="@blog.blogId" type="button" class="btn btn-outline-danger waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Yazarı Sil">
+                                        <a asp-controller="Blog" asp-action="RemoveBlog" asp-route-id="@blog.blogId" type="button" class="btn btn-outline-danger waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Blogu Sil">
                                             <i class="mdi mdi-delete-outline"></i>
                                         </a>
                                     </div>

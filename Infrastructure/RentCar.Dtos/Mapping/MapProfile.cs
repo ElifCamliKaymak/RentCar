@@ -10,8 +10,9 @@ namespace RentCar.WebApi.Mapping
         public MapProfile()
         {
             CreateMap<CreateCommentDto, Comment>();
-            CreateMap<Comment, GetCommentDto>();
+            CreateMap<Comment, GetCommentDto>()
+                .ForMember(dest => dest.BlogTitle, opt => opt.MapFrom(src => src.Blog.Title));
         }
-        
+
     }
 }

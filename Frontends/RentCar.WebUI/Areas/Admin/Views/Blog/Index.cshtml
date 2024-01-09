@@ -39,7 +39,7 @@
                                         <a asp-action="GetBlog" asp-route-id="@blog.blogId" type="button" class="btn btn-outline-dark waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Blogu Aç">
                                             <i class="mdi mdi-format-list-bulleted"></i>
                                         </a>
-                                        <a asp-action="#" asp-route-id="@blog.blogId" type="button" class="btn btn-outline-warning waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Blogun Yorumları">
+                                        <a asp-controller="Comment" asp-action="GetCommentsByBlog" asp-route-id="@blog.blogId" type="button" class="btn btn-outline-warning waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Blogun Yorumları">
                                             <i class="far fa-comments"></i>
                                         </a>
                                         <a asp-action="RemoveBlog" asp-route-id="@blog.blogId" type="button" class="btn btn-outline-danger waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Blogu Sil">

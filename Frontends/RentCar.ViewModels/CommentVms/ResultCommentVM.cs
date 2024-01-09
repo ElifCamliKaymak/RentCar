@@ -1,6 +1,6 @@
-﻿namespace RentCar.Bussiness.Dtos.CommentDtos
+﻿namespace RentCar.ViewModels.CommentVms
 {
-    public class GetCommentDto
+    public class ResultCommentVM
     {
         public int CommentId { get; set; }
         public string Name { get; set; }

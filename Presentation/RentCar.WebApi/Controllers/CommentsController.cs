@@ -33,8 +33,8 @@ namespace RentCar.WebApi.Controllers
             return Ok(value);
         }
         
-        [HttpGet("CommentListByBlog/{id}")]
-        public async Task<IActionResult> CommentListByBlog(int id)
+        [HttpGet("GetCommentListByBlog/{id}")]
+        public async Task<IActionResult> GetCommentListByBlog(int id)
         {
             var value = await _service.CommentListByBlogAsync(id);
             return Ok(value);
