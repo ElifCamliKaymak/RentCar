@@ -1,0 +1,59 @@
+﻿@model List<ResultSocialMediaVM>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h4>Sosyal Medya Hesap Linkleri Yönetimi</h4>
+                    <button asp-area="Admin"
+                            asp-controller="SocialMedia"
+                            asp-action="CreateSocialMediaPartial"
+                            type="button"
+                            class="btn btn-primary waves-effect waves-light mb-2"
+                            data-toggle="modal"
+                            data-target="#exampleModalCenter">
+                        <i class="mdi mdi-plus"></i>
+                        Yeni Sosyal Medya Oluştur
+                    </button>
+                </div>
+
+                <table id="datatable-buttons" class="table table-striped dt-responsive nowrap">
+                    <thead>
+                        <tr>
+                            <th>Başlık</th>
+                            <th>Seçenekler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var SocialMedia in Model)
+                        {
+                            <tr>
+                                <td>@SocialMedia.Name</td>
+                                <td>
+                                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                                        <a asp-action="UpdateSocialMedia" asp-route-id="@SocialMedia.SocialMediaId" type="button" class="btn btn-outline-warning waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Sosyal Medyayı Güncelle">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </a>
+                                        <a asp-action="RemoveSocialMedia" asp-route-id="@SocialMedia.SocialMediaId" type="button" class="btn btn-outline-danger waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Sosyal Medyayı Sil">
+                                            <i class="mdi mdi-delete-outline"></i>
+                                        </a>
+                                        <a asp-action="SocialMediaDetail" asp-route-id="@SocialMedia.SocialMediaId" type="button" class="btn btn-outline-success waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Sosyal Medyayı Aç">
+                                            <i class="mdi mdi-signal-variant"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="~/Areas/Admin/Views/SocialMedia/CreateSocialMediaPartial.cshtml" model="new CreateSocialMediaVM()"></partial>
