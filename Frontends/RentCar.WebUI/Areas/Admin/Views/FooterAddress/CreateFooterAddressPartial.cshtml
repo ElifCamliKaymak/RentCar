@@ -1,0 +1,33 @@
+﻿@model CreateFooterAddressVM
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Yeni Alt Adres Girişi</h4>
+                    <hr />
+                    <form asp-action="CreateFooterAddress" method="post">
+                        <div class="form-group">
+                            <label for="@Model.Email">Email</label>
+                            <input asp-for="@Model.Email" type="email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="@Model.PhoneNumber">Telefon Numarası</label>
+                            <input asp-for="@Model.PhoneNumber" type="tel" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="@Model.Address">Adres</label>
+                            <textarea asp-for="@Model.Address" rows="5" type="text" class="form-control"></textarea>
+                        </div>                     
+                        <div class="form-group">
+                            <label for="@Model.Description">Açıklama</label>
+                            <textarea asp-for="@Model.Description" rows="5" type="text" class="form-control"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Kaydet</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

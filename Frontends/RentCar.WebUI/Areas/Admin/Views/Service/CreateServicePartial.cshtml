@@ -1,0 +1,29 @@
+﻿@model CreateServiceVM
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Yeni Servis Girişi</h4>
+                    <hr />
+                    <form asp-action="CreateService" method="post">
+                        <div class="form-group">
+                            <label for="@Model.Title">Servis İsmi</label>
+                            <input asp-for="@Model.Title" type="text" class="form-control">
+                        </div>                      
+                        <div class="form-group">
+                            <label for="@Model.IconUrl">Servis Iconu</label>
+                            <input asp-for="@Model.IconUrl" type="text" class="form-control">
+                        </div>                       
+                        <div class="form-group">
+                            <label for="@Model.Description">Servis Açıklaması</label>
+                            <input asp-for="@Model.Description" type="text" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Kaydet</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

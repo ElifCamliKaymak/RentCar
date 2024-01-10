@@ -1,0 +1,62 @@
+﻿@model List<ResultFooterAddressVM>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <h4>Alt Adres Alanı</h4>
+                    <button asp-area="Admin"
+                            asp-controller="FooterAddress"
+                            asp-action="CreateFooterAddressPartial"
+                            type="button"
+                            class="btn btn-primary waves-effect waves-light mb-2"
+                            data-toggle="modal"
+                            data-target="#exampleModalCenter">
+                        <i class="mdi mdi-plus"></i>
+                        Yeni Alt Adres Oluştur
+                    </button>
+                </div>
+
+                <table id="datatable-buttons" class="table table-striped dt-responsive nowrap">
+                    <thead>
+                        <tr>
+                            <th>Email</th>
+                            <th>Telefon Numarası</th>
+                            <th>Adres</th>
+                            <th>Açıklama</th>
+                            <th>Seçenekler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var footerAddress in Model)
+                        {
+                            <tr>
+                                <td>@footerAddress.Email</td>
+                                <td>@footerAddress.PhoneNumber</td>
+                                <td>@footerAddress.Address</td>
+                                <td>@footerAddress.Description</td>
+                                <td>
+                                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                                        <a asp-action="UpdateFooterAddress" asp-route-id="@footerAddress.FooterAddressId" type="button" class="btn btn-outline-warning waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Alt Adresi Güncelle">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </a>
+                                        <a asp-action="RemoveFooterAddress" asp-route-id="@footerAddress.FooterAddressId" type="button" class="btn btn-outline-danger waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Alt Adresi Sil">
+                                            <i class="mdi mdi-delete-outline"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="~/Areas/Admin/Views/FooterAddress/CreateFooterAddressPartial.cshtml" model="new CreateFooterAddressVM()"></partial>
