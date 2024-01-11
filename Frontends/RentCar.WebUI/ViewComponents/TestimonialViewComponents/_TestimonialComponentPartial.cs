@@ -20,7 +20,7 @@ namespace RentCar.WebUI.ViewComponents.TestimonialViewComponents
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultTestimonialVm>>(jsonData);
+                var values = JsonConvert.DeserializeObject<List<ResultTestimonialVM>>(jsonData);
                 return View(values);
             }
             return View();

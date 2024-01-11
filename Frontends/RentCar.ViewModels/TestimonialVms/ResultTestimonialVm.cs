@@ -1,6 +1,6 @@
 ﻿namespace RentCar.ViewModels.TestimonialVms
 {
-    public class ResultTestimonialVm
+    public class ResultTestimonialVM
     {
         public int testimonialId { get; set; }
         public string name { get; set; }
