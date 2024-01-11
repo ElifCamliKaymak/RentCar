@@ -12,17 +12,17 @@
                 <form action="UpdateBanner" method="post">
                     <input type="hidden" asp-for="SocialMediaId" />
                     <div class="row">
-                        <div class="form-group">
+                        <div class="form-group col-6">
                             <label for="@Model.Icon">Sosyal Medya Iconu</label>
                             <input asp-for="@Model.Icon" type="text" class="form-control">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-6">
                             <label for="@Model.Name">Sosyal Medya Başlığı</label>
                             <input asp-for="@Model.Name" type="text" class="form-control">
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group">
+                        <div class="form-group col-6">
                             <label for="@Model.Url">Sosyal Medya Linki</label>
                             <input asp-for="@Model.Url" type="text" class="form-control">
                         </div>
