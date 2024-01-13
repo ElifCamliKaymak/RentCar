@@ -38,10 +38,5 @@ namespace RentCar.Persistance.Repositories.CarRepositories
                 .ToListAsync();
             return values;
         }
-
-        public async Task<int> GetCarCountAsync()
-        {
-            return await _context.Cars.CountAsync();
-        }
     }
 }
