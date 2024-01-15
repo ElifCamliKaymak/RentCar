@@ -11,8 +11,8 @@
         Task<double> GetAverageRentPriceForWeekly();
         Task<double> GetAverageRentPriceForMonthly();
         Task<int> GetCarCountByTransmissionIsAuto();
-        Task<string> GetBrandNameByMaximumCar();
-        Task<string> GetBlogTitleByMaximumBlogComment();
+        Task<(string,int)> GetBrandNameByMaximumCar();
+        Task<(string,int)> GetBlogTitleByMaximumBlogComment();
         Task<int> GetCarCountByKmSmallerThen1000();
         Task<int> GetCarCountByFuelGasolineOrDiesel();
         Task<int> GetCarCountByFuelElectric();

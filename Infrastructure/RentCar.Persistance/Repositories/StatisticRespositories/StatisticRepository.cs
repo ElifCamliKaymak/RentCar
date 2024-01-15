@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using RentCar.Application.Interfaces.StatisticInterfaces;
 using RentCar.Persistance.Context;
+using System.Net.Http.Json;
+using System.Text.Json.Serialization;
 
 namespace RentCar.Persistance.Repositories.StatisticRespositories
 {
@@ -59,10 +62,19 @@ namespace RentCar.Persistance.Repositories.StatisticRespositories
             return await _context.Blogs.CountAsync();
         }
 
-        public async Task<string> GetBlogTitleByMaximumBlogComment()
+        public async Task<(string,int)> GetBlogTitleByMaximumBlogComment()
         {
+            var result = await _context.Blogs
+                .Join(_context.Comments,
+                    b => b.BlogId,
+                    c => c.BlogId, (b, c)
+                    => new { b, c })
+                .GroupBy(x => x.b.Title)
+                .OrderByDescending(x => x.Count())
+                .Select(x => new { BlogTitle = x.Key, Count = x.Count() })
+                .FirstOrDefaultAsync();
 
-            return "ok";
+            return (result.BlogTitle,result.Count);
         }
 
         public async Task<int> GetBrandCount()
@@ -70,10 +82,19 @@ namespace RentCar.Persistance.Repositories.StatisticRespositories
             return await _context.Brands.CountAsync();
         }
 
-        public async Task<string> GetBrandNameByMaximumCar()
+        public async Task<(string,int)> GetBrandNameByMaximumCar()
         {
-            //return await _context.Cars.Include(x=>x.Brand).GroupBy(x=>x.BrandId).OrderByDescending(x=>x.Key).Select(x=>x.;
-            return "";
+            var result = await _context.Brands
+                .Join(_context.Cars,
+                    b => b.BrandId,
+                    c => c.BrandId, (b, c)
+                    => new { b, c })
+                .GroupBy(x => x.c.Brand.Name)
+                .OrderByDescending(x => x.Count())
+                .Select(x => new { BrandName = x.Key, Count = x.Count() })
+            .FirstOrDefaultAsync();
+                       
+            return (result.BrandName, result.Count);
         }
 
         public async Task<string> GetCarBrandAndModelByRentPriceDailyMax()

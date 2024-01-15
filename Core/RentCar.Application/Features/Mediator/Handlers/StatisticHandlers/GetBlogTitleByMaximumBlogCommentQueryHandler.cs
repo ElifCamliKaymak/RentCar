@@ -19,7 +19,8 @@ namespace RentCar.Application.Features.Mediator.Handlers.StatisticHandlers
             var value = await _repository.GetBlogTitleByMaximumBlogComment();
             return new GetBlogTitleByMaximumBlogCommentQueryResult
             {
-                BlogTitleByMaximumBlogComment = value
+                BlogTitleByMaximumBlogComment = value.Item1,
+                BlogCountByMaximumBlogComment = value.Item2,
             };
         }
     }

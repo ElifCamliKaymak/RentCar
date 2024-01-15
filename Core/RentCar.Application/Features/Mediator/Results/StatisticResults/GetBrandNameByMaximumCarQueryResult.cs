@@ -3,5 +3,6 @@
     public class GetBrandNameByMaximumCarQueryResult
     {
         public string BrandNameByMaximumCar { get; set; }
+        public int BrandCountByMaximumCar { get; set; }
     }
 }

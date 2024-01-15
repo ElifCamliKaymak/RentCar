@@ -19,7 +19,8 @@ namespace RentCar.Application.Features.Mediator.Handlers.StatisticHandlers
             var value = await _repository.GetBrandNameByMaximumCar();
             return new GetBrandNameByMaximumCarQueryResult
             {
-                BrandNameByMaximumCar = value
+                BrandNameByMaximumCar = value.Item1,
+                BrandCountByMaximumCar = value.Item2,
             };
         }
     }
