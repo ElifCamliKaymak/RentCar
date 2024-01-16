@@ -6,5 +6,7 @@
         public string Name { get; set; }
 
         public List<CarRental> CarRentals { get; set; }
+        public List<CarRentalProcess> CarRentalProcessesForPickUp { get; set; }      
+        public List<CarRentalProcess> CarRentalProcessesForDropOff { get; set; }
     }
 }

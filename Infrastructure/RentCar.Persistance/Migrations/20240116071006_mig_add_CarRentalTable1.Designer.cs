@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RentCar.Persistance.Context;
 
@@ -11,9 +12,11 @@ using RentCar.Persistance.Context;
 namespace RentCar.Persistance.Migrations
 {
     [DbContext(typeof(RentCarContext))]
-    partial class RentCarContextModelSnapshot : ModelSnapshot
+    [Migration("20240116071006_mig_add_CarRentalTable1")]
+    partial class mig_add_CarRentalTable1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -303,56 +306,6 @@ namespace RentCar.Persistance.Migrations
                     b.ToTable("CarRentals");
                 });
 
-            modelBuilder.Entity("RentCar.Domain.Entities.CarRentalProcess", b =>
-                {
-                    b.Property<int>("CarRentalProcessId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CarRentalProcessId"));
-
-                    b.Property<int>("CarId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("DropOffDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("DropOffDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("DropOffLocationId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("PickUpDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("PickUpDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PickUpLocationId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("TotalPrice")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("CarRentalProcessId");
-
-                    b.HasIndex("CarId");
-
-                    b.HasIndex("CustomerId");
-
-                    b.HasIndex("DropOffLocationId");
-
-                    b.HasIndex("PickUpLocationId");
-
-                    b.ToTable("CarRentalProcesses");
-                });
-
             modelBuilder.Entity("RentCar.Domain.Entities.Category", b =>
                 {
                     b.Property<int>("CategoryId")
@@ -429,23 +382,6 @@ namespace RentCar.Persistance.Migrations
                     b.HasKey("ContactId");
 
                     b.ToTable("Contacts");
-                });
-
-            modelBuilder.Entity("RentCar.Domain.Entities.Customer", b =>
-                {
-                    b.Property<int>("CustomerId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CustomerId"));
-
-                    b.Property<string>("CustomerMail")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("CustomerId");
-
-                    b.ToTable("Customer");
                 });
 
             modelBuilder.Entity("RentCar.Domain.Entities.Feature", b =>
@@ -727,41 +663,6 @@ namespace RentCar.Persistance.Migrations
                     b.Navigation("Location");
                 });
 
-            modelBuilder.Entity("RentCar.Domain.Entities.CarRentalProcess", b =>
-                {
-                    b.HasOne("RentCar.Domain.Entities.Car", "Car")
-                        .WithMany("CarRentalProcesses")
-                        .HasForeignKey("CarId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RentCar.Domain.Entities.Customer", "Customer")
-                        .WithMany("CarRentalProcesses")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("RentCar.Domain.Entities.Location", "DropOffLocation")
-                        .WithMany("CarRentalProcessesForDropOff")
-                        .HasForeignKey("DropOffLocationId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("RentCar.Domain.Entities.Location", "PickUpLocation")
-                        .WithMany("CarRentalProcessesForPickUp")
-                        .HasForeignKey("PickUpLocationId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Car");
-
-                    b.Navigation("Customer");
-
-                    b.Navigation("DropOffLocation");
-
-                    b.Navigation("PickUpLocation");
-                });
-
             modelBuilder.Entity("RentCar.Domain.Entities.Comment", b =>
                 {
                     b.HasOne("RentCar.Domain.Entities.Blog", "Blog")
@@ -809,19 +710,12 @@ namespace RentCar.Persistance.Migrations
 
                     b.Navigation("CarPricings");
 
-                    b.Navigation("CarRentalProcesses");
-
                     b.Navigation("CarRentals");
                 });
 
             modelBuilder.Entity("RentCar.Domain.Entities.Category", b =>
                 {
                     b.Navigation("Blogs");
-                });
-
-            modelBuilder.Entity("RentCar.Domain.Entities.Customer", b =>
-                {
-                    b.Navigation("CarRentalProcesses");
                 });
 
             modelBuilder.Entity("RentCar.Domain.Entities.Feature", b =>
@@ -831,10 +725,6 @@ namespace RentCar.Persistance.Migrations
 
             modelBuilder.Entity("RentCar.Domain.Entities.Location", b =>
                 {
-                    b.Navigation("CarRentalProcessesForDropOff");
-
-                    b.Navigation("CarRentalProcessesForPickUp");
-
                     b.Navigation("CarRentals");
                 });
 

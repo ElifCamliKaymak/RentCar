@@ -31,7 +31,21 @@ namespace RentCar.Persistance.Context
         public DbSet<TagCloud> TagClouds { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<CarRental> CarRentals { get; set; }
+        public DbSet<CarRentalProcess> CarRentalProcesses { get; set; }
 
-        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<CarRentalProcess>()
+                .HasOne(crp => crp.PickUpLocation)
+                .WithMany(l => l.CarRentalProcessesForPickUp)
+                .HasForeignKey(crp => crp.PickUpLocationId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<CarRentalProcess>()
+                .HasOne(crp => crp.DropOffLocation)
+                .WithMany(l => l.CarRentalProcessesForDropOff)
+                .HasForeignKey(crp => crp.DropOffLocationId)
+                .OnDelete(DeleteBehavior.Restrict);
+        }
     }
 }
