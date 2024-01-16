@@ -62,7 +62,7 @@ namespace RentCar.Persistance.Repositories.StatisticRespositories
             return await _context.Blogs.CountAsync();
         }
 
-        public async Task<(string,int)> GetBlogTitleByMaximumBlogComment()
+        public async Task<(string, int)> GetBlogTitleByMaximumBlogComment()
         {
             var result = await _context.Blogs
                 .Join(_context.Comments,
@@ -74,7 +74,7 @@ namespace RentCar.Persistance.Repositories.StatisticRespositories
                 .Select(x => new { BlogTitle = x.Key, Count = x.Count() })
                 .FirstOrDefaultAsync();
 
-            return (result.BlogTitle,result.Count);
+            return (result.BlogTitle, result.Count);
         }
 
         public async Task<int> GetBrandCount()
@@ -82,7 +82,7 @@ namespace RentCar.Persistance.Repositories.StatisticRespositories
             return await _context.Brands.CountAsync();
         }
 
-        public async Task<(string,int)> GetBrandNameByMaximumCar()
+        public async Task<(string, int)> GetBrandNameByMaximumCar()
         {
             var result = await _context.Brands
                 .Join(_context.Cars,
@@ -93,18 +93,44 @@ namespace RentCar.Persistance.Repositories.StatisticRespositories
                 .OrderByDescending(x => x.Count())
                 .Select(x => new { BrandName = x.Key, Count = x.Count() })
             .FirstOrDefaultAsync();
-                       
+
             return (result.BrandName, result.Count);
         }
 
         public async Task<string> GetCarBrandAndModelByRentPriceDailyMax()
         {
-            throw new NotImplementedException();
+            var result = await _context.Cars
+                .Include(a => a.Brand)
+                .Join(_context.CarPricings,
+                    c => c.CarId,
+                    cp => cp.CarId,
+                    (c, cp) => new { c, cp })
+                .Join(_context.Pricings,
+                    x => x.cp.PricingId,
+                    p => p.PricingId, (x, p) => new { x, p })
+                .Where(x => x.p.Name == "Günlük")
+                .OrderByDescending(b => b.x.cp.Amount)
+                .FirstOrDefaultAsync();
+
+            return $"{result.x.c.Brand.Name} - {result.x.c.Model}";
         }
 
-        public Task<string> GetCarBrandAndModelByRentPriceDailyMin()
+        public async Task<string> GetCarBrandAndModelByRentPriceDailyMin()
         {
-            throw new NotImplementedException();
+            var result = await _context.Cars
+                .Include(a => a.Brand)
+                .Join(_context.CarPricings,
+                    c => c.CarId,
+                    cp => cp.CarId,
+                    (c, cp) => new { c, cp })
+                .Join(_context.Pricings,
+                    x => x.cp.PricingId,
+                    p => p.PricingId, (x, p) => new { x, p })
+                .Where(x => x.p.Name == "Günlük")
+                .OrderBy(b => b.x.cp.Amount)
+                .FirstOrDefaultAsync();
+
+            return $"{result.x.c.Brand.Name} - {result.x.c.Model}";
         }
 
         public async Task<int> GetCarCountAsync()

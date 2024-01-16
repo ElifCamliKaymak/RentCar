@@ -131,6 +131,24 @@ namespace RentCar.WebUI.Areas.Admin.Controllers
                 var values = JsonConvert.DeserializeObject<ResultStatisticVM>(jsonData);
                 ViewBag.CarCountByFuelElectric = values.CarCountByFuelElectric;
             };
+            
+
+            var responseMessageCarBrandAndModelByRentPriceDailyMax = await client.GetAsync("https://localhost:7263/api/Statistics/GetCarBrandAndModelByRentPriceDailyMax");
+            if (responseMessageCarBrandAndModelByRentPriceDailyMax.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessageCarBrandAndModelByRentPriceDailyMax.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<ResultStatisticVM>(jsonData);
+                ViewBag.CarBrandAndModelByRentPriceDailyMax = values.CarBrandAndModelByRentPriceDailyMax;
+            };
+            
+
+            var responseMessageCarBrandAndModelByRentPriceDailyMin = await client.GetAsync("https://localhost:7263/api/Statistics/GetCarBrandAndModelByRentPriceDailyMin");
+            if (responseMessageCarBrandAndModelByRentPriceDailyMin.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessageCarBrandAndModelByRentPriceDailyMin.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<ResultStatisticVM>(jsonData);
+                ViewBag.CarBrandAndModelByRentPriceDailyMin = values.CarBrandAndModelByRentPriceDailyMin;
+            };
 
             return View();
         }
