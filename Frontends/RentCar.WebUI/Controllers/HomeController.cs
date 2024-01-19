@@ -1,32 +1,46 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RentCar.WebUI.Models;
-using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Newtonsoft.Json;
+using RentCar.ViewModels.CarRentalProcessVms;
+using RentCar.ViewModels.LocationVms;
 
 namespace RentCar.WebUI.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IHttpClientFactory _httpClientFactory;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IHttpClientFactory httpClientFactory)
         {
-            _logger = logger;
+            _httpClientFactory = httpClientFactory;
         }
 
-        public IActionResult Index()
+        [HttpGet]
+        public async Task<IActionResult> Index()
         {
+            ViewBag.Locations = await GetLocationAsync();
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
+        [HttpPost]
+        public async Task<IActionResult> Index(CreateCarRentalProcessVM model)
+        {            
+            return RedirectToAction("Index","CarRental", model);
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        private async Task<SelectList> GetLocationAsync()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:7263/api/Locations");
+
+            var jsonData = await responseMessage.Content.ReadAsStringAsync();
+            var values = JsonConvert.DeserializeObject<List<ResultLocationVM>>(jsonData);
+
+            return new SelectList(values.Select(x => new SelectListItem
+            {
+                Value = x.LocationId.ToString(),
+                Text = x.Name
+            }), "Value", "Text");
         }
     }
 }
