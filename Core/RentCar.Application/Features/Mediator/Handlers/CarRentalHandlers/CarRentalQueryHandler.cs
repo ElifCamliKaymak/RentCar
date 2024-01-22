@@ -2,6 +2,7 @@
 using RentCar.Application.Features.Mediator.Queries.CarRentalQueries;
 using RentCar.Application.Features.Mediator.Results.CarRentalResults;
 using RentCar.Application.Interfaces.CarRentalInterfaces;
+using RentCar.Domain.Entities;
 
 namespace RentCar.Application.Features.Mediator.Handlers.CarRentalHandlers
 {
@@ -23,7 +24,8 @@ namespace RentCar.Application.Features.Mediator.Handlers.CarRentalHandlers
                 BrandName = x.Car.Brand.Name,
                 CoverImageUrl = x.Car.CoverImagerUrl,
                 Model = x.Car.Model,
-                
+                Amount = x.Car.CarPricings
+                    .FirstOrDefault(cp => cp.Pricing.Name == "Günlük")?.Amount ?? 0
             }).ToList();
         }
     }
