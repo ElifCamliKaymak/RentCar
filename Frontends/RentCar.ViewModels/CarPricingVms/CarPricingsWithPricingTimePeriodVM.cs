@@ -1,9 +1,9 @@
-﻿namespace RentCar.Application.Features.Mediator.Results.CarPricingResults
+﻿namespace RentCar.ViewModels.CarPricingVms
 {
-	public class GetCarPricingsWithTimePeriodQueryResult
-    {
+	public class CarPricingsWithPricingTimePeriodVM
+	{
         public string ModelBrandName { get; set; }
-        public string CoverImageUrl { get; set;}
+        public string CoverImageUrl { get; set; }
         public decimal DailyAmount { get; set; }
         public decimal WeeklyAmount { get; set; }
         public decimal MonthlyAmount { get; set; }

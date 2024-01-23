@@ -19,10 +19,11 @@ namespace RentCar.Application.Features.Mediator.Handlers.CarPricingHandlers
 			var values = await _repository.GetCarPricingsWithTimePeriodAsync();
 			return values.Select(x=> new GetCarPricingsWithTimePeriodQueryResult
 			{
-				BrandAndModelName=x.BrandAndModelName,
-				DailyAmount = x.Amounts[0],
-				MonthlyAmount = x.Amounts[1],
-				WeeklyAmount = x.Amounts[2]
+				ModelBrandName = x.ModelBrandName,
+				CoverImageUrl = x.CoverImageUrl,
+				DailyAmount = x.DailyAmount,
+                WeeklyAmount =  x.WeeklyAmount,
+				MonthlyAmount = x.MonthlyAmount
 			}).ToList();
 		}
 	}
