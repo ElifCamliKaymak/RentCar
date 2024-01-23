@@ -21,5 +21,12 @@ namespace RentCar.WebApi.Controllers
             var values = await _mediator.Send(new GetCarPricingWithCarQuery());
             return Ok(values);
         }
+
+        [HttpGet("GetCarPricingsWithTimePeriodList")]
+        public async Task<IActionResult> GetCarPricingsWithTimePeriodList()
+        {
+            var values = await _mediator.Send(new GetCarPricingsWithTimePeriodQuery());
+            return Ok(values);
+        }
     }
 }
