@@ -21,7 +21,7 @@ namespace RentCar.Persistance.Repositories.CarPricingRepositories
                 .Include(cp => cp.Car)
                 .ThenInclude(c => c.Brand)
                 .Include(cp => cp.Pricing)
-                .Where(x => x.PricingId == 2)
+                .Where(x => x.Pricing.Name =="Günlük")
                 .ToListAsync();
             return values;
 

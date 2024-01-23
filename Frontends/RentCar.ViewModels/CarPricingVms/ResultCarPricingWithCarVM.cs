@@ -2,6 +2,7 @@
 {
     public class ResultCarPricingWithCarVM
     {
+        public int CarId { get; set; }
         public int CarPricingId { get; set; }
         public string BrandName { get; set; }
         public string Model { get; set; }

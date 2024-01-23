@@ -17,14 +17,16 @@ namespace RentCar.Application.Features.Mediator.Handlers.CarPricingHandlers
         public async Task<List<GetCarPricingWithCarQueryResult>> Handle(GetCarPricingWithCarQuery request, CancellationToken cancellationToken)
         {
             var values = await _repository.GetCarPricingWithCars();
-            return values.Select(x => new GetCarPricingWithCarQueryResult
+            var results = values.Select(x => new GetCarPricingWithCarQueryResult
             {
                 Amount = x.Amount,
                 BrandName = x.Car.Brand.Name,
+                CarId = x.Car.CarId,
                 CarPricingId = x.CarPricingId,
                 CoverImageUrl = x.Car.CoverImagerUrl,
                 Model = x.Car.Model
             }).ToList();
+            return results;
         }
     }
 }
