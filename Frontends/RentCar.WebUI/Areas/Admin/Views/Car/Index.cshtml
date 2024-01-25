@@ -45,7 +45,7 @@
                                 <td>@car.Fuel</td>
                                 <td>
                                     <div class="btn-group mr-2" role="group" aria-label="First group">
-                                        <a asp-action="CarDetail" asp-route-id="@car.CarId" type="button" class="btn btn-outline-dark waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Detayları Gör">
+                                        <a asp-controller="CarFeature" asp-action="CarDetail" asp-route-id="@car.CarId" type="button" class="btn btn-outline-dark waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Detayları Gör">
                                             <i class="mdi mdi-format-list-bulleted"></i>
                                         </a>
                                         <a asp-action="UpdateCar" asp-route-id="@car.CarId" type="button" class="btn btn-outline-warning waves-effect waves-light" data-toggle="tooltip" data-placement="bottom" title="Aracı Güncelle">
