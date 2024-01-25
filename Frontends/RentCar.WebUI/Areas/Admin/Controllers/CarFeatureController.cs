@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using RentCar.ViewModels.CarFeatureVms;
 
 namespace RentCar.WebUI.Areas.Admin.Controllers
 {
@@ -11,15 +13,16 @@ namespace RentCar.WebUI.Areas.Admin.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
+
         public async Task<IActionResult> CarDetail(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"https://localhost:7263/api/Cars/{id}");
+            var responseMessage = await client.GetAsync($"https://localhost:7263/api/CarFeatures/CarFeaturesListByCar/{id}");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                //var values = JsonConvert.DeserializeObject<List<ResultCarsByBrandIdVM>>(jsonData);
-                //return View(values);
+                var values = JsonConvert.DeserializeObject<List<ResultCarFeatureByCarIdVM>>(jsonData);
+                return View(values);
             }
             return View();
         }
