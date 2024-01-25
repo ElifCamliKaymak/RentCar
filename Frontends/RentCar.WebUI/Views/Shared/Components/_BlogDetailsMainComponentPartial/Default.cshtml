@@ -6,8 +6,10 @@
     @await Component.InvokeAsync("_BlogDetailsCloudTagByBlogComponentPartial", new {id = ViewBag.BlogId})
     @await Component.InvokeAsync("_BlogDetailsAuthorAboutComponentPartial", new {id = ViewBag.BlogId})
     <div class="pt-5 mt-5">
-        @await Component.InvokeAsync("_CommentListByBlogComponentPartial")
-        @await Component.InvokeAsync("_AddCommentComponentPartial")
+        @await Component.InvokeAsync("_CommentListByBlogComponentPartial", new {id = ViewBag.BlogId})
+        @* @await Component.InvokeAsync("_AddCommentComponentPartial") *@
+
+        <partial name="~/Views/Blog/AddCommentPartial.cshtml" model="new CreateCommentVM(){ BlogId=ViewBag.BlogId }"></partial>
     </div>
 
 </div>
