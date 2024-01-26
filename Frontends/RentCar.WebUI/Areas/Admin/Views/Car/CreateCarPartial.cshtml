@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-body">
                     <h4 class="card-title">Yeni Araç Girişi</h4>
-                    <hr/>
+                    <hr />
                     <form asp-action="CreateCar" method="post">
                         <div class="form-group">
                             <label for="@Model.BrandId">Marka</label>
@@ -41,10 +41,21 @@
                         <div class="form-group">
                             <label for="@Model.BigImageUrl">Resimin Yolu</label>
                             <input asp-for="@Model.BigImageUrl" type="text" class="form-control">
-                        </div>        
+                        </div>
                         <div class="form-group">
                             <label for="@Model.CoverImagerUrl">Kapak Resminin Yolu</label>
-                            <input asp-for="@Model.CoverImagerUrl" type="file" class="form-control">
+                            <input asp-for="@Model.CoverImagerUrl" type="text" class="form-control">
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <label for="CarFeatures">Özellikler</label><br />
+                                <select asp-for="@Model.CarFeatures" class="form-control select2-multiple col-12" data-toggle="select2" multiple placeholder="  ---- Araç Özelliklerini Seçiniz... ---  ">
+                                    @foreach (var item in ViewBag.Features)
+                                    {
+                                        <option class="col-12" value="@item.Value">@item.Text</option>
+                                    }
+                                </select>
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary waves-effect waves-light">Kaydet</button>
                     </form>

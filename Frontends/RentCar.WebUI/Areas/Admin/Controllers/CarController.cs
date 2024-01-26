@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 using RentCar.ViewModels.BrandVms;
 using RentCar.ViewModels.CarVms;
+using RentCar.ViewModels.FeatureVms;
 using System.Text;
 
 namespace RentCar.WebUI.Areas.Admin.Controllers
@@ -19,6 +20,7 @@ namespace RentCar.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             ViewBag.Brands = await GetBrandsAsync();
+            ViewBag.Features = await GetFeaturesAsync();
 
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:7263/api/Cars/GetCarWithBrand");
@@ -30,6 +32,7 @@ namespace RentCar.WebUI.Areas.Admin.Controllers
             }
             return View();
         }
+
 
         [HttpPost]
         public async Task<IActionResult> CreateCar(CreateCarVM createCarVM)
@@ -114,6 +117,20 @@ namespace RentCar.WebUI.Areas.Admin.Controllers
             return new SelectList(values.Select(x => new SelectListItem
             {
                 Value = x.BrandId.ToString(),
+                Text = x.Name
+            }), "Value", "Text");
+        }
+
+        private async Task<SelectList> GetFeaturesAsync()
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:7263/api/Features");
+            var jsonData = await responseMessage.Content.ReadAsStringAsync();
+            var values = JsonConvert.DeserializeObject<List<ResultFeatureVM>>(jsonData);
+
+            return new SelectList(values.Select(x => new SelectListItem
+            {
+                Value = x.FeatureId.ToString(),
                 Text = x.Name
             }), "Value", "Text");
         }
