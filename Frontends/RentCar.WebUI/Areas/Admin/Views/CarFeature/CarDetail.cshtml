@@ -17,12 +17,17 @@
                         <div class="form-check">
                             <input type="hidden" asp-for="@Model[i].CarFeatureId" />
                             <input type="hidden" asp-for="@Model[i].FeatureName" />
+                            <input type="hidden" asp-for="@Model[i].CarId" />
+                            <input type="hidden" asp-for="@Model[i].FeatureId" />
                             <input type="checkbox" asp-for="@Model[i].Available" class="form-check-input" />
                             <label claa="form-check-label" for="@Model[i].Available">@Model[i].FeatureName</label>
                         </div>
                     }
                     <br />
-                    <button class="btn btn-primary">Değişiklikleri Kaydet</button>
+                    <div>
+                        <button class="btn btn-primary">Değişiklikleri Kaydet</button>
+                        <button asp-controller="Car" asp-action="Index" class="btn btn-secondary">Araç Listesi</button>
+                    </div>                    
                 </form>
             </div>
         </div>

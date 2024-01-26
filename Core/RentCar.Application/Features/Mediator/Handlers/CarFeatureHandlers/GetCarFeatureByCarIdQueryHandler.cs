@@ -22,7 +22,8 @@ namespace RentCar.Application.Features.Mediator.Handlers.CarFeatureHandlers
                 Available = x.Available,
                 CarFeatureId = x.CarFeatureId,
                 FeatureId = x.FeatureId,
-                FeatureName = x.Feature.Name
+                FeatureName = x.Feature.Name,
+                CarId = x.CarId,
             }).ToList();
         }
     }
