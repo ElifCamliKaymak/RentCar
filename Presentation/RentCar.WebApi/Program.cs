@@ -1,6 +1,8 @@
+using FluentValidation.AspNetCore;
 using RentCar.Persistance.Context;
 using RentCar.WebApi.Extensions;
 using RentCar.WebApi.Mapping;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +21,11 @@ builder.Services.ConfigureContactRegistration();
 builder.Services.ConfigureCommentRegistration();
 
 builder.Services.AddMediatorServices(builder.Configuration);
+
+builder.Services.AddControllers().AddFluentValidation(x=>
+{
+    x.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
