@@ -3,11 +3,11 @@ using RentCar.Application.Features.Mediator.Results.CarFeatureResults;
 
 namespace RentCar.Application.Features.Mediator.Queries.GetCarFeatureQueries
 {
-    public class GetCarFeatureByCarIdQuery : IRequest<List<GetCarFeatureByCarIdQueryResult>>
+    public class GetCarDescriptionQuery : IRequest<List<GetCarFeatureByCarIdQueryResult>>
     {
         public int Id { get; set; }
 
-        public GetCarFeatureByCarIdQuery(int id)
+        public GetCarDescriptionQuery(int id)
         {
             Id = id;
         }

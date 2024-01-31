@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using RentCar.Application.Features.CQRS.Commands.BrandCommands;
 using RentCar.Application.Features.CQRS.Handlers.BrandHandlers;
 using RentCar.Application.Features.Mediator.Commands.CarFeatureCommands;
+using RentCar.Application.Features.Mediator.Queries.CarFeatureQueries;
 using RentCar.Application.Features.Mediator.Queries.GetCarFeatureQueries;
 
 namespace RentCar.WebApi.Controllers

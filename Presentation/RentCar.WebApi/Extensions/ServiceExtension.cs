@@ -6,6 +6,7 @@ using RentCar.Application.Features.CQRS.Handlers.CategoryHandlers;
 using RentCar.Application.Features.CQRS.Handlers.ContactHandlers;
 using RentCar.Application.Interfaces;
 using RentCar.Application.Interfaces.BlogInterfaces;
+using RentCar.Application.Interfaces.CarDescriptionInterfaces;
 using RentCar.Application.Interfaces.CarFeatureInterfaces;
 using RentCar.Application.Interfaces.CarInterfaces;
 using RentCar.Application.Interfaces.CarPricingInterfaces;
@@ -16,6 +17,7 @@ using RentCar.Application.Interfaces.TagCloudInterfaces;
 using RentCar.Bussiness.MapServices;
 using RentCar.Persistance.Repositories;
 using RentCar.Persistance.Repositories.BlogRepositories;
+using RentCar.Persistance.Repositories.CarDescriptionRepositories;
 using RentCar.Persistance.Repositories.CarFeatureRepositories;
 using RentCar.Persistance.Repositories.CarPricingRepositories;
 using RentCar.Persistance.Repositories.CarRentalRepositories;
@@ -38,6 +40,7 @@ namespace RentCar.WebApi.Extensions
             services.AddScoped(typeof(IStatisticRepository), typeof(StatisticRepository));
             services.AddScoped(typeof(ICarRentalRepository), typeof(CarRentalRepository));
             services.AddScoped(typeof(ICarFeatureRepository), typeof(CarFeatureRepository));
+            services.AddScoped(typeof(ICarDescriptionRepository), typeof(CarDescriptionRepository));
         }
 
         public static void ConfigureAboutRegistration(this IServiceCollection services)

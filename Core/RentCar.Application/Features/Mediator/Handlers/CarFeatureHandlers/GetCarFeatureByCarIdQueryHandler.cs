@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using RentCar.Application.Features.Mediator.Queries.GetCarFeatureQueries;
+using RentCar.Application.Features.Mediator.Queries.CarFeatureQueries;
 using RentCar.Application.Features.Mediator.Results.CarFeatureResults;
 using RentCar.Application.Interfaces.CarFeatureInterfaces;
 
