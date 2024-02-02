@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using RentCar.Application.Features.Mediator.Queries.GetCheckAppUserQueries;
+using RentCar.Application.Features.Mediator.Queries.AppUserQueries;
 using RentCar.Application.Tools;
 
 namespace RentCar.WebApi.Controllers

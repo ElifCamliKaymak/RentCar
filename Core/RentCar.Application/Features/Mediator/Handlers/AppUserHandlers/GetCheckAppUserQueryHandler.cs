@@ -1,10 +1,10 @@
 ﻿using MediatR;
-using RentCar.Application.Features.Mediator.Queries.GetCheckAppUserQueries;
+using RentCar.Application.Features.Mediator.Queries.AppUserQueries;
 using RentCar.Application.Features.Mediator.Results.AppUserResults;
 using RentCar.Application.Interfaces;
 using RentCar.Domain.Entities;
 
-namespace RentCar.Application.Features.Mediator.Handlers.GetCheckAppUserQueryHandlers
+namespace RentCar.Application.Features.Mediator.Handlers.AppUserHandlers
 {
     public class GetCheckAppUserQueryHandler : IRequestHandler<GetCheckAppUserQuery, GetCheckAppUserQueryResult>
     {

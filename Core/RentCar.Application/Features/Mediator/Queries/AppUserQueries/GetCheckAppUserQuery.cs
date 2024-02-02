@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using RentCar.Application.Features.Mediator.Results.AppUserResults;
 
-namespace RentCar.Application.Features.Mediator.Queries.GetCheckAppUserQueries
+namespace RentCar.Application.Features.Mediator.Queries.AppUserQueries
 {
     public class GetCheckAppUserQuery : IRequest<GetCheckAppUserQueryResult>
     {
