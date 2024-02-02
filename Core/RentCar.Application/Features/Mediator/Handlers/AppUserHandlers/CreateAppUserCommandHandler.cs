@@ -22,6 +22,9 @@ namespace RentCar.Application.Features.Mediator.Handlers.AppUserHandlers
                 UserName = request.UserName,
                 Password = request.Password,
                 AppRoleId = (int)Role.Member,
+                Name = request.Name,    
+                Surname = request.Surname,
+                Email = request.Email
             });
         }
     }
