@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RentCar.Application.Features.CQRS.Commands.CarCommands;
 using RentCar.Application.Features.CQRS.Handlers.CarHandlers;
 using RentCar.Application.Features.CQRS.Queries.CarQueries;
 
 namespace RentCar.WebApi.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class CarsController : ControllerBase
@@ -70,15 +72,15 @@ namespace RentCar.WebApi.Controllers
         {
             var values = await _getCarWithBrandQueryHandler.Handle();
             return Ok(values);
-        }     
-        
+        }
+
         [HttpGet("GetLastFiveCarsWithBrand")]
         public async Task<IActionResult> GetLastFiveCarsWithBrand()
         {
             var values = await _getLastFiveCarsWithBrandQueryHandler.Handle();
             return Ok(values);
-        }     
-        
+        }
+
         [HttpGet("GetCarsByBrandId/{id}")]
         public async Task<IActionResult> GetCarsByBrandId(int id)
         {

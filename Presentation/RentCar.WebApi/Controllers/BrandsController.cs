@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RentCar.Application.Features.CQRS.Commands.BrandCommands;
 using RentCar.Application.Features.CQRS.Handlers.BrandHandlers;
 using RentCar.Application.Features.CQRS.Queries.BrandQueries;
@@ -6,6 +7,7 @@ using RentCar.Application.Validators.BrandValidators;
 
 namespace RentCar.WebApi.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class BrandsController : ControllerBase

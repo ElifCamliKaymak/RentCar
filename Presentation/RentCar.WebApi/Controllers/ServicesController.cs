@@ -1,11 +1,12 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RentCar.Application.Features.Mediator.Commands.ServiceCommands;
 using RentCar.Application.Features.Mediator.Queries.ServiceQueries;
 
 namespace RentCar.WebApi.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class ServicesController : ControllerBase

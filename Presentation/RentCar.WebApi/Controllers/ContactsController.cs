@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RentCar.Application.Features.CQRS.Commands.ContactCommands;
 using RentCar.Application.Features.CQRS.Handlers.ContactHandlers;
 using RentCar.Application.Features.CQRS.Queries.ContactQueries;
 
 namespace RentCar.WebApi.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class ContactsController : ControllerBase

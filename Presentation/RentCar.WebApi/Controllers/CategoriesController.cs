@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RentCar.Application.Features.CQRS.Commands.CategoryCommands;
 using RentCar.Application.Features.CQRS.Handlers.CategoryHandlers;
@@ -6,6 +7,7 @@ using RentCar.Application.Features.CQRS.Queries.CategoryQueries;
 
 namespace RentCar.WebApi.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoriesController : ControllerBase

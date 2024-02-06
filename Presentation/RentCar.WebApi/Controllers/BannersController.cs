@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RentCar.Application.Features.CQRS.Commands.BannerCommands;
 using RentCar.Application.Features.CQRS.Handlers.BannerHandlers;
 using RentCar.Application.Features.CQRS.Queries.BannerQueries;
 
 namespace RentCar.WebApi.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class BannersController : ControllerBase
