@@ -6,7 +6,6 @@ using RentCar.Application.Features.Mediator.Queries.CarFeatureQueries;
 
 namespace RentCar.WebApi.Controllers
 {
-    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class CarFeaturesController : ControllerBase

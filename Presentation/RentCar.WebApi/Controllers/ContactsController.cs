@@ -6,8 +6,7 @@ using RentCar.Application.Features.CQRS.Queries.ContactQueries;
 
 namespace RentCar.WebApi.Controllers
 {
-    [Authorize(Roles = "Admin")]
-    [Route("api/[controller]")]
+    [Authorize(Roles = "Admin")]    [Route("api/[controller]")]
     [ApiController]
     public class ContactsController : ControllerBase
     {

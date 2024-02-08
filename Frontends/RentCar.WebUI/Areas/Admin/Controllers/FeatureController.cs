@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RentCar.ViewModels.FeatureVms;
 using System.Text;
 
 namespace RentCar.WebUI.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Authorize(Roles = "Admin")]
+        [Area("Admin")]
     public class FeatureController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;

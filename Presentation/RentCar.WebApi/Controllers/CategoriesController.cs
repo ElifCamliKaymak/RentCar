@@ -7,7 +7,6 @@ using RentCar.Application.Features.CQRS.Queries.CategoryQueries;
 
 namespace RentCar.WebApi.Controllers
 {
-    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoriesController : ControllerBase

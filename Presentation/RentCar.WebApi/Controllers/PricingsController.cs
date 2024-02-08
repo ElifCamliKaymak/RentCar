@@ -6,7 +6,6 @@ using RentCar.Application.Features.Mediator.Queries.PricingQueries;
 
 namespace RentCar.WebApi.Controllers
 {
-    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class PricingsController : ControllerBase

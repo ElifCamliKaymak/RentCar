@@ -7,7 +7,6 @@ using RentCar.Application.Validators.BrandValidators;
 
 namespace RentCar.WebApi.Controllers
 {
-    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class BrandsController : ControllerBase

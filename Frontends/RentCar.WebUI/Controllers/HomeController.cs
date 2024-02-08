@@ -1,8 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
+using NuGet.Protocol;
 using RentCar.ViewModels.CarRentalProcessVms;
 using RentCar.ViewModels.LocationVms;
+using System.Collections;
+using System.Net.Http.Headers;
 
 namespace RentCar.WebUI.Controllers
 {
@@ -30,17 +33,23 @@ namespace RentCar.WebUI.Controllers
 
         private async Task<SelectList> GetLocationAsync()
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7263/api/Locations");
-
-            var jsonData = await responseMessage.Content.ReadAsStringAsync();
-            var values = JsonConvert.DeserializeObject<List<ResultLocationVM>>(jsonData);
-
-            return new SelectList(values.Select(x => new SelectListItem
+            var token = User.Claims.FirstOrDefault(x=>x.Type =="accessToken")?.Value;
+            if(token is not null)
             {
-                Value = x.LocationId.ToString(),
-                Text = x.Name
-            }), "Value", "Text");
+                var client = _httpClientFactory.CreateClient();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                var responseMessage = await client.GetAsync("https://localhost:7263/api/Locations");
+
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultLocationVM>>(jsonData);
+
+                return new SelectList(values.Select(x => new SelectListItem
+                {
+                    Value = x.LocationId.ToString(),
+                    Text = x.Name
+                }), "Value", "Text");
+            }
+            return null;
         }
     }
 }

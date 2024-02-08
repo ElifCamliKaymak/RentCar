@@ -7,7 +7,6 @@ using RentCar.Application.Features.Mediator.Queries.AuthorQueries;
 
 namespace RentCar.WebApi.Controllers
 {
-    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class AuthorsController : ControllerBase

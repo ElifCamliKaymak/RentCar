@@ -2,9 +2,11 @@
 using Newtonsoft.Json;
 using System.Text;
 using RentCar.ViewModels.TestimonialVms;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RentCar.WebUI.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     public class TestimonialController : Controller
     {
