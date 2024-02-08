@@ -1,29 +1,16 @@
 using FluentValidation.AspNetCore;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using RentCar.Application.Tools;
 using RentCar.Persistance.Context;
 using RentCar.WebApi.Extensions;
+using RentCar.WebApi.Hubs;
 using RentCar.WebApi.Mapping;
 using System.Reflection;
-using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddHttpClient();
 // Add services to the container.
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
-{
-    opt.RequireHttpsMetadata = false;
-    opt.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidAudience = JwtTokenDefaults.ValidAudience,
-        ValidIssuer = JwtTokenDefaults.ValidIssuer,
-        ClockSkew = TimeSpan.Zero,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtTokenDefaults.Key)),
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true
-    };
-});
+builder.Services.CongifureJwtRegistration();
+builder.Services.ConfigureSignalRRegistration();
+builder.Services.AddSignalR();
 
 builder.Services.AddScoped<RentCarContext>();
 
@@ -59,10 +46,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("CorsPolicy");
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHub<CarHub>("/carhub");
 
 app.Run();
